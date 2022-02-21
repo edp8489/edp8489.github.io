@@ -6,7 +6,7 @@ navbar_entries:
     url: blog
 
 footer_entries:
-  - title: LinkedIn
+  - title: Linkedin
     url: https://www.linkedin.com/in/eric-peters-a187aa17/
 
   - title: github

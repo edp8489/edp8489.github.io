@@ -1,5 +1,9 @@
-#theme: jekyll-theme-cayman
-#remote_theme: abhinavs/moonwalk
-theme: minima
-minima:
-  skin: dark
+# theme: jekyll-theme-cayman
+# theme: minima
+remote_theme: abhinavs/moonwalk
+
+author:
+  name: Eric Peters
+  email: e_peters@alum.mit.edu
+
+google_analytics: G-QEYP0WGDX8

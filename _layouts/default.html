@@ -11,16 +11,18 @@
         <div class="credits">
           {%- if site.theme_config.show_copyright == true -%}
           &copy;&nbsp;{{ "now" | date: "%Y" }}&nbsp;{{site.author.name}}
-          &nbsp;
-          •
-          &nbsp;
+
+            {% for item in site.data.home.footer_entries %}
+            &nbsp;
+            •
+            &nbsp;
+            <a href="{{ item.url }}">{{ item.title }}</a>
+            {% endfor %}
           {%- endif -%}
           {%- if site.soopr -%}
+          <br />
           Powered by <a href="https://www.soopr.co" target="_blank" rel="noreferrer">Soopr</a>
-          &nbsp;
-          •
-          &nbsp;
-          {%- endif -%}
+          {%- endif -%}<br />
           Theme&nbsp; <a href="https://github.com/abhinavs/moonwalk" target="_blank" rel="noreferrer">Moonwalk</a>
         </div>
       </div>

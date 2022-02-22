@@ -1,0 +1,11 @@
+I"�<h2 id="welcome">Welcome</h2>
+<p>I’m an aerospace structures engineer by trade. All too often I find myself remaking the same “quick and dirty” Excel analysis tool <em>(cringe)</em> or thinking “there HAS to be a better way” to do some tedious task. Here’s my attempt to rectify that.</p>
+
+<p>The purpose of this site is to showcase the various widgets I develop as I teach myself JS, React, and other web technologies. Most projects will be engineering tools that aim to be more user-friendly than whatever I was using at the time that prompted the idea.</p>
+
+<h2 id="tools">Tools</h2>
+<ul>
+  <li>Galvanic Compatibility - Visualize the potential for galvanic corrosion between pairs of dissimilar metals and recommended surface treatments for each. References MIL-STD-889-C. <a href="https://edp8489.github.io/galvanic_compatibility">Use the tool</a> | <a href="https://github.com/edp8489/galvanic_compatibility">Link to repository</a></li>
+</ul>
+
+:ET

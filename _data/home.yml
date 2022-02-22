@@ -1,9 +1,11 @@
 navbar_entries:
-  - title: about
+  - title: Home
+    url: /
+  - title: About Me
     url: about
 
-  - title: blog
-    url: blog
+  - title: Articles
+    url: posts
 
 footer_entries:
   - title: Linkedin
@@ -15,7 +17,7 @@ footer_entries:
 project_entries:
   - title: Galvanic Compatibility
     url: https://edp8489.github.io/galvanic_compatibility/
-    desc: Easily visualize corrosion potential of dissimilar metal pairs per MIL-STD-889C
+    desc: Visualize the potential for galvanic corrosion between pairs of dissimilar metals and recommended surface treatments for each. References MIL-STD-889-C.
 
 # old_project_entries:
 

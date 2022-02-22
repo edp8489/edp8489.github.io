@@ -1,4 +1,8 @@
-## About Me
+---
+layout: post
+title: About Me
+---
+
 I studied aerospace engineering at MIT, earning bachelor's and master's degrees in 2011 and 2014. My research experience was focused on small (think: shoebox to dishwasher size scale) spacecraft/instrument development. After finishing my master's, I spent two years at a rocket startup doing preliminary design of composite primary structures for expendable vehicles. 
 
 For the past five years I've worked at Blue Origin as a structures engineer on the New Shepard Crew Capsule. I've supported design verification for the first human-rated capsule, redesigned the primary structure for future upgraded vehicles, and authored countless analysis packages. 

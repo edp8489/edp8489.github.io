@@ -1,5 +1,6 @@
 ---
 layout: home
+title: Homepage | Eric Peters
 ---
 ## Welcome
 I'm an aerospace structures engineer by trade. All too often I find myself remaking the same "quick and dirty" Excel analysis tool *(cringe)* or thinking "there HAS to be a better way" to do some tedious task. Here's my attempt to rectify that.

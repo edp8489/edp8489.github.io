@@ -3,7 +3,6 @@ layout: home
 title: Homepage | Eric Peters
 ---
 ## Welcome
-I'm an aerospace structures engineer by trade. All too often I find myself remaking the same "quick and dirty" Excel analysis tool *(cringe)* or thinking "there HAS to be a better way" to do some tedious task. Here's my attempt to rectify that.
+Hey there! I'm Eric. I studied aerospace engineering at MIT and have spent the first 10 years of my career as a structures engineer for a wide variety of spacecraft ranging from shoebox-sized experimental cubesats to human-rated capsules. Along the way, I've noticed that a lot of the tools we use are clunky and lag far behind the beautiful interfaces and painless user experiences that modern web apps are innovating on every day.
 
-The purpose of this site is to showcase the various widgets I develop as I teach myself JS, React, and other web technologies. Most projects will be engineering tools that aim to be more user-friendly than whatever I was using at the time that prompted the idea.
-
+This site aims to showcase the various widgets I develop as I teach myself JS, React, and other web technologies and use those new skills to make engineering tools that are more user-friendly than what I suspect many of us are used to.

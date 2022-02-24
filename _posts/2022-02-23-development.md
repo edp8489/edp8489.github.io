@@ -1,0 +1,11 @@
+---
+layout: post
+title: Cross-compilation setup
+published: false
+---
+I split my development between two machines. At home, I primarily use my desktop -- a 2020 Mac Mini with Apple's first-gen M1 chip. When I need a change of scenery, I'm on my Windows 10 laptop running Ubuntu through WSL2. In theory, I should have ~~unlimited power~~ the ability to compile anything for any system. In practice... my armchair developer skills aren't good enough to understand the nuances of Apple's developer ecosystem -- the behemoth that is the Xcode app, xcode command line tools, path changes made in macOS 11 that vary between the Intel and ARM systems, whether I should abandon any attempts to compile natively for ARM and just use Rosetta 2 to run Terminal in x86_64 emulation mode...
+
+I recently tried compiling the open-source finite element package MYSTRAN on my Mini, which triggered a bunch of gfortran errors related to support for REAL(16) quad-precision numbers. After a lot of googling, I found out that libquadmath is not included with the arm64-dawrin build of gcc [link to MacPorts page](TBD link). Another post implies that might not even be needed becasue ... [TBD link](TBD link). There's also the possibility that the correct headers exist, but aren't in my path.
+
+The rest of this post documents my attempt to set up a working cross-compiler on my Linux machine using Clang/LLVM and [osxcross](https://github.com/tpoechtrager/osxcross).
+

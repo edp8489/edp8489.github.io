@@ -43,12 +43,20 @@ I added the following lines to the end of my `~/.zshrc` file:
 
 ```
 export MACOSX_DEPLOYMENT_TARGET=10.11
-export PATH=$PATH:/opt/osxcross/bin
+export PATH=$PATH:~/osxcross/bin
 ```
 Next, update the MacPorts cache (courtesy of [this post](https://tenbaht.github.io/sduino/developer/cross-compile-for-osx/)): 
 `osxcross-macports update-cache`
 
 ## example build: Mystran
-cmake flags:
+Compiler options and cmake flags:
+- `CC=x86_64-apple-darwin20.4-gcc`
+- `CXX=x86_64-apple-darwin20.4-g++`
+- `FC=x86_64-apple-darwin20.4-gfortran`
+- `PKGCONFIG=x86_64-apple-darwin20.4-pkg-config`
 - `-D[BUILD_SHARED_LIBS:BOOL=OFF]`  
 https://cmake.org/cmake/help/latest/variable/BUILD_SHARED_LIBS.html#variable:BUILD_SHARED_LIBS
+1. Run cmake to configure makefile:  
+`CC=x86_64-apple-darwin20.4-gcc CXX=x86_64-apple-darwin20.4-g++ FC=x86_64-apple-darwin20.4-gfortran PKGCONFIG=x86_64-apple-darwin20.4-pkg-config cmake -DBUILD_SHARED_LIBS:BOOL=OFF .`
+2. Make  
+`make CC=x86_64-apple-darwin20.4-gcc CXX=x86_64-apple-darwin20.4-g++ FC=x86_64-apple-darwin20.4-gfortran PKGCONFIG=x86_64-apple-darwin20.4-pkg-config`

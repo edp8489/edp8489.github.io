@@ -9,3 +9,46 @@ I recently tried compiling the open-source finite element package MYSTRAN on my 
 
 The rest of this post documents my attempt to set up a working cross-compiler on my Linux machine using Clang/LLVM and [osxcross](https://github.com/tpoechtrager/osxcross).
 
+## osxcross compilation gotchas
+CMake unable to find python 3.8 installation
+- Issue with pyenv setup. Running `pyenv doctor` fixed the issue
+
+xar compilation issues
+- `autoconf` wasn't installed
+
+gcc build unable to find xar shared library
+- moved `osxcross/target` build directory to final install directory `/opt/osxcross/` before building gcc
+- running gcc build script before moving everything to `/opt/osxcross` fixed the issue
+- In hindsight, I should've set the `TARGET_DIR=/opt/osxcross` environment variable before calling `./build.sh && ./build_gcc.sh`
+
+## Simplified installation steps
+After compiling 5 different times and working out the various kinks, I settled on the following (final?) process:
+1. Make sure all dependencies are installed
+`sudo apt-get install ...`
+2. Clone the osxcross repository into a new local folder (after much grief trying to install to `/opt/`, I deided to use `~/osxcross` as my base directory):  
+`git clone https://github.com/tpoechtrager/osxcross.git ~/osxcross/setup`
+3. Download desired MacOSX SDK tarball into the `tarballs` folder:  
+`cd ~/osxcross/setup`  
+`wget -P tarballs https://github.com/phracker/MacOSX-SDKs/releases/path-to-desired-version`
+4. Build clang compilers, setting target installation path  
+`TARGET_DIR=~/osxcross ./build.sh`
+5. Add osxcross/bin directory to your PATH  
+`export PATH=$PATH:~/osxcross/bin`
+5. Build latest gcc compilers, setting target installation path and specifying we want gfortran, too  
+`TARGET_DIR=~/osxcross ENABLE_FORTRAN=1 ./build_gcc.sh` 
+## Post-install configuration
+Based on the 11.3 SDK I used, the minimum version of OSX I can compile for is 10.9. I want to be a bit more modern and (arbitrarily) chose 10.11
+
+I added the following lines to the end of my `~/.zshrc` file:
+
+```
+export MACOSX_DEPLOYMENT_TARGET=10.11
+export PATH=$PATH:/opt/osxcross/bin
+```
+Next, update the MacPorts cache (courtesy of [this post](https://tenbaht.github.io/sduino/developer/cross-compile-for-osx/)): 
+`osxcross-macports update-cache`
+
+## example build: Mystran
+cmake flags:
+- `-D[BUILD_SHARED_LIBS:BOOL=OFF]`  
+https://cmake.org/cmake/help/latest/variable/BUILD_SHARED_LIBS.html#variable:BUILD_SHARED_LIBS

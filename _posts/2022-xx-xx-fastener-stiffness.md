@@ -5,25 +5,29 @@ published: false
 ---
 
 ## References
-- Massera "Analytical and Numerical Investigation of Multi-Fastener Joints in Composite Structures". DLR-IB-FA-BS-2019-59
+- Massera (2019) "Analytical and Numerical Investigation of Multi-Fastener Joints in Composite Structures". DLR-IB-FA-BS-2019-59
     - Pg 27 lists equations for all fastener stiffness formulations and their references
-- Eremin "Methods for flexibility determination of bolted joints: empirical formula review"
+- Eremin (2021) "Methods for flexibility determination of bolted joints: empirical formula review"
     - Journal of Physics Conference Series
     - https://iopscience.iop.org/article/10.1088/1742-6596/1925/1/012058/pdf
-- Chandregowda "Evaluation of fastener stiffness modelling methods for aircraft structural joints"
+- Chandregowda (2018) "Evaluation of fastener stiffness modelling methods for aircraft structural joints"
     - AIP Conference Proceedings 1943, 020001 (2018); https://doi.org/10.1063/1.5029577
     - $35 for access
-- Gunbring "Prediction and Modelling of Prediction and Modelling of Fastener Flexibility Using FE"
+- Gunbring (2008) "Prediction and Modelling of Prediction and Modelling of Fastener Flexibility Using FE"
     - https://www.diva-portal.org/smash/record.jsf?pid=diva2%3A17841&dswid=9846 
+- Morris (2004) "Defining a standard formula and test-method for fastener flexibility in lap-joints": PhD Thesis, Technical University Delft
+- Rutman (2009) "Fastener Modeling for Joining Composite Parts": Americas Virtual Product Development Conference
+- Martins (2017) "Influence of Types of Discrete Modelling of Fasteners in FEM Models" [link](https://www.researchgate.net/publication/321058719_Influence_of_Types_of_Discrete_Modelling_of_Fasteners_in_FEM_Models)
 
 ## Stiffness formulations
 - Tate & Rosenfield
-    - NACA TN 1051
+    - [NACA TN 1051](https://ntrs.nasa.gov/citations/19930081668)
     - Massera ref 12
         - (NACA paper)
     - Eremin ref 10, 11
 - Nelson (& Bunin & Hart-Smith)
-    - NASA CR 3710
+    - All worked for Douglas
+    - [NASA CR 3710](https://ntrs.nasa.gov/citations/19870001540)
     - Massera ref 13
         - (NASA paper)
 - Huth

@@ -29,13 +29,18 @@ After compiling 5 different times and working out the various kinks, I settled o
 `git clone https://github.com/tpoechtrager/osxcross.git ~/osxcross/setup`
 3. Download desired MacOSX SDK tarball into the `tarballs` folder:  
 `cd ~/osxcross/setup`  
-`wget -P tarballs https://github.com/phracker/MacOSX-SDKs/releases/path-to-desired-version`
+`wget -P tarballs https://github.com/phracker/MacOSX-SDKs/releases/{path-to-desired-version}`
 4. Build clang compilers, setting target installation path  
 `TARGET_DIR=~/osxcross ./build.sh`
 5. Add osxcross/bin directory to your PATH  
 `export PATH=$PATH:~/osxcross/bin`
-5. Build latest gcc compilers, setting target installation path and specifying we want gfortran, too  
+5. Build latest gcc compilers, setting target installation path and specifying we want to build gfortran, too  
 `TARGET_DIR=~/osxcross ENABLE_FORTRAN=1 ./build_gcc.sh` 
+6. Delete gfortran shared libraries to force compiled programs to link to static library
+  - Make a backup
+  `cd ~/osxcross && cp -r x86_64-apple-darwin20.4 x86_64-darwin20.4-backup`
+  - Delete libquadmath dynamic shared library
+  `find x86_64-apple-darwin14 -name "libquadmath*dylib" -exec rm {} \;`
 ## Post-install configuration
 Based on the 11.3 SDK I used, the minimum version of OSX I can compile for is 10.9. I want to be a bit more modern and (arbitrarily) chose 10.11
 
@@ -77,6 +82,11 @@ set(CMAKE_CXX_COMPILER x86_64-apple-darwin20.4-clang++)
 set(CMAKE_Fortran_COMPILER x86_64-apple-darwin20.4-gfortran)
 # specify pkg-cofig executable
 set(PKG_CONFIG_EXECUTABLE x86_64-apple-darwin20.4-pkg-config)
+
+# set compiler flags
+# set(CMAKE_C_FLAGS <flags>)
+# set(CMAKE_CXX_FLAGS <flags>)
+set(CMAKE_Fortran_FLAGS -static-libgfortran)
 
 # set search path options for compilers, libraries, and packages
 # Search for programs in the build host directories

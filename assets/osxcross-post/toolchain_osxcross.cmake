@@ -24,6 +24,11 @@ set(CMAKE_Fortran_COMPILER x86_64-apple-darwin20.4-gfortran)
 # specify pkg-cofig executable
 set(PKG_CONFIG_EXECUTABLE x86_64-apple-darwin20.4-pkg-config)
 
+# set compiler flags
+# set(CMAKE_C_FLAGS <flags>)
+# set(CMAKE_CXX_FLAGS <flags>)
+set(CMAKE_Fortran_FLAGS -static-libgfortran)
+
 # set search path options for compilers, libraries, and packages
 # Search for programs in the build host directories
 #SET(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)

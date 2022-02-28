@@ -49,14 +49,87 @@ Next, update the MacPorts cache (courtesy of [this post](https://tenbaht.github.
 `osxcross-macports update-cache`
 
 ## example build: Mystran
-Compiler options and cmake flags:
-- `CC=x86_64-apple-darwin20.4-gcc`
-- `CXX=x86_64-apple-darwin20.4-g++`
-- `FC=x86_64-apple-darwin20.4-gfortran`
-- `PKGCONFIG=x86_64-apple-darwin20.4-pkg-config`
-- `-D[BUILD_SHARED_LIBS:BOOL=OFF]`  
 https://cmake.org/cmake/help/latest/variable/BUILD_SHARED_LIBS.html#variable:BUILD_SHARED_LIBS
-1. Run cmake to configure makefile:  
-`CC=x86_64-apple-darwin20.4-gcc CXX=x86_64-apple-darwin20.4-g++ FC=x86_64-apple-darwin20.4-gfortran PKGCONFIG=x86_64-apple-darwin20.4-pkg-config cmake -DBUILD_SHARED_LIBS:BOOL=OFF .`
-2. Make  
-`make CC=x86_64-apple-darwin20.4-gcc CXX=x86_64-apple-darwin20.4-g++ FC=x86_64-apple-darwin20.4-gfortran PKGCONFIG=x86_64-apple-darwin20.4-pkg-config`
+1. Create toolchain file to specify host and target systems and compilers.  
+```
+# specify properties of the host system
+# i.e. system you're compiling ON
+set(CMAKE_HOST_SYSTEM Linux)
+set(CMAKE_HOST_SYSTEM_PROCESSOR x86_64)
+
+# specify properties of the target system
+# i.e. system you're compiling FOR
+set(CMAKE_SYSTEM_APPLE)
+set(CMAKE_SYSTEM_VERSION 20.4)
+set(CMAKE_SYSTEM_PROCESSOR x86_64)
+
+# set osxcross directory as the root path for find(*)
+# EDIT THIS IF YOU INSTALLED OSXCROSS ELSEWHERE (e.g. /opt/osxcross)
+set(CMAKE_FIND_ROOT_PATH ~/osxcross)
+
+# specify compilers to use
+# C Compiler - clang or gcc
+set(CMAKE_C_COMPILER x86_64-apple-darwin20.4-clang)
+# set(CMAKE_C_COMPILER x86_64-apple-darwin20.4-gcc)
+# C++ compilers - clang++ or g++
+set(CMAKE_CXX_COMPILER x86_64-apple-darwin20.4-clang++)
+# set(CMAKE_CXX_COMPILER x86_64-apple-darwin20.4-g++)
+set(CMAKE_Fortran_COMPILER x86_64-apple-darwin20.4-gfortran)
+# specify pkg-cofig executable
+set(PKG_CONFIG_EXECUTABLE x86_64-apple-darwin20.4-pkg-config)
+
+# set search path options for compilers, libraries, and packages
+# Search for programs in the build host directories
+#SET(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+
+# For libraries and headers in the target directories
+SET(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+SET(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+
+# set to build static libraries
+set(BUILD_SHARED_LIBS OFF)
+```  
+or download mine [here](https://edp8489.github.io/assets/osxcross-post/toolchain_osxcross.cmake)
+1. For some reason, even though libf2c is available in the MacPorts catalog, `osxcross-macports` can't find it. So we have to go through a somewhat annoying process to compile it during MYSTRAN compilation. Per the comments in `CMakeLists.txt`, f2c generates the `arith.h` header on the fly. This throws an error during cross-compilation since it compiled `arithchk` for the target system, but then tried to run it on the host to generate the header file. I already compiled this for my host system (x86_64 Linux) and manually copied the header file to the includes directory.
+  - Comment out lines 74 through 91 of `CMakeLists.txt`  
+  ```
+  # get a load of this: f2c generates its own "arith.h" on the fly
+  # so we gotta compile arithchk and run it
+  #set(F2C_ARITHCHK_SRC "${F2C_DIR}/arithchk.c")
+  #set(F2C_ARITHCHK_BIN "${F2C_DIR}/arithchk")
+  #set(F2C_ARITH_H "${F2C_INCLUDE_DIR}/arith.h")
+  #set_source_files_properties(
+  #  ${F2C_ARITHCHK_SRC} PROPERTIES COMPILE_FLAGS "-DNO_LONG_LONG -DNO_FPINIT"
+  #)
+  #add_executable(arithchk ${F2C_ARITHCHK_SRC})
+  #target_link_libraries(arithchk m)
+  #set_target_properties(
+  #  arithchk PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${F2C_DIR}
+  #)
+  #add_custom_command(
+  #  OUTPUT ${F2C_ARITH_H}
+  #  COMMAND ${F2C_ARITHCHK_BIN} > ${F2C_ARITH_H}
+  #  DEPENDS ${F2C_ARITHCHK_BIN}
+  #)
+  ```
+1. Run cmake to configure makefile. Use the platform-specific version built with osxcross to avoid linking errors in the next step. This will also download the source files for f2c and SuperLU into their own folders in the mystran base directory.
+`x86_64-apple-darwin20.4-cmake -DCMAKE_TOOLCHAIN_FILE=toolchain_osxcross.cmake . `  
+(NOTE: In cmake 3.21 and newer you can replace `-DCMAKE_TOOLCHAIN_FILE=` with `--toolchain `)
+1. Create file `f2c/include/arith.h` and paste in the following:
+```
+/* arith.h */
+#define IEEE_8087
+#define Arith_Kind_ASL 1
+#define Long int
+#define Intcast (int)(long)
+#define Double_Align
+#define X64_bit_pointers
+#define NO_LONG_LONG
+#define QNaN0 0x0
+#define QNaN1 0xfff80000
+
+```  
+1. Build it!
+`make` or `x86_64-apple-darwin20.4-cmake --build`
+1. Sanity check. Try running on the host system. It should fail.
+![assets/osxcross-post/mystran-cross-compile_exec_err.png]

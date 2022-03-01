@@ -11,7 +11,6 @@ google_analytics: G-QEYP0WGDX8
 permalink: /:slug
 favicon: "" # relative path to site's favicon
 
-# theme: minima
 remote_theme: abhinavs/moonwalk
 theme_config:
   appearance: "dark"
@@ -33,6 +32,9 @@ theme_config:
     title_blog: Articles
     title_misc_list: Details
     title_old_projects: Inactive Projects
+
+collections:
+  - tags
 
 plugins:
   - jekyll-feed

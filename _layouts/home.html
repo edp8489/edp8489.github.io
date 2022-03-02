@@ -28,7 +28,7 @@ layout: default
 
 {% if site.theme_config.show_blog == true %}
   <h2>{{ site.theme_config.home.title_blog }}</h2>
-  {% include post_list.html collection=site.tags.featured-post %}
+  {% include post_list.html collection=site.tags.featured %}
 {% endif %}
 
 {% if site.theme_config.show_old_projects == true %}

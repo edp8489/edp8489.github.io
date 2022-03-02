@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Cross-compiling for macOS using WSL2 and OSXCross
-tags: featured
+tags: [featured]
 ---
 I split my development between two machines. At home, I primarily use my desktop -- a 2020 Mac Mini with Apple's first-gen M1 chip. When I need a change of scenery, I'm on my Windows 10 laptop running Ubuntu through WSL2. In theory, I should have ~~unlimited power~~ the ability to compile anything for any system. In practice... my armchair developer skills aren't good enough to understand the nuances of Apple's developer ecosystem -- the behemoth that is the Xcode app, xcode command line tools, path changes made in macOS 11 that vary between the Intel and ARM systems, whether I should abandon any attempts to compile natively for ARM and just use Rosetta 2 to run Terminal in x86_64 emulation mode...
 

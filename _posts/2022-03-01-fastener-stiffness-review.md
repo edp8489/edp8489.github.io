@@ -82,7 +82,7 @@ Errata
 - Gunbring's reproduction incorrectly uses E1 and E2 instead of fastener modulus (E3 or Ef) in final two terms of the equation.  
 
 #### Morris (2004)
-Original source not available. Reproduced in de Rijck and Martins as:
+Original source not available. This formulations allows for multiple columns and rows of fasteners. No distinction seems to be made between single- vs double-shear configurations. Reproduced in de Rijck and Martins as:
 
 $$ \begin{multline}
  \frac{1}{K_{shear}} = \left[ 
@@ -101,10 +101,14 @@ The additional parameters for this equation are:
 - E_ST: Through-thickness modulus of elasticity of joint members
 - d_head: Fastener head diameter
 - p: Row pitch (spacing between fasteners in multi-row joint)
+- r: Number of rows
+- s: Fastener pitch
 - cf: Fastener type correction factor
     - cf = 1 for aluminum rivets
     - cf = 8.2 for countersunk aluminum rivets
     - cf = 13.1 for titanium Hi-Loks
+
+(Personal comment: No guidance is given for values of *p* or *s* to use if the joint contains a single row or single column of fasteners. Based on engineering judgment I'd use a value of 4*d in these situations.)
 
 ## References (& Modern Research)
 - Jarfall (1983) "Shear loaded fastener installations"

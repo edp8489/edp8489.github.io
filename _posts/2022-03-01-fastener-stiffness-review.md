@@ -24,11 +24,10 @@ First, some nomenclature. I standardized the subscript terms for each equation.
 - t: Joint member thickness [in or m]
 - d: Bolt diameter (in or m)
 
-#### Tate & Rosenfield (1946)
-- [NACA TN 1051](https://ntrs.nasa.gov/citations/19930081668)
-- Formula reproduced in Massera, Eremin, Chandregowda
-
-$$ Eq TBD $$
+#### Tate & Rosenfeld (1946)
+[NACA TN 1051](https://ntrs.nasa.gov/citations/19930081668) - "Preliminary investigation of the loads carried by individual bolts in bolted joints"
+- Used as the basis of derivation for the Boeing and Nelson methods.
+- Is reproduced in Huth, de Rijck, Massera, Martins, Eremin, and Chandregowda papers.
 
 #### Swift (Douglas Aircraft Co.) (1971)
 "Development of the Fail-safe Design Features of the DC-10". Published in [ASTM STP 486 (paywall)](https://www.astm.org/stp26678s.html)
@@ -50,20 +49,61 @@ $$ \frac{1}{K_{shear}} = \frac{(t_1 + t_2)^2}{E_3 \cdot d} + 3.72 \cdot \left(\f
     
 
 #### Boeing
-- Presented in Huth, citing "unpublished report"
-- Reproduced in Massera ref 14
-- Presented in Gunbring, citing (Jarfall 1983)
-    - First equation varies wildly from what's presented in Huth ("1968")
-    - Second equation matches what's presented in Huth ("1969")
-- Eremin 
+Two versions are presented in Huth, citing an unpublished Boeing report. The first, used until 1968, is a modified version of Tate & Rosenfeld. 
 
-$$ Eq TBD $$
+$$ \begin{multline}
+\frac{1}{K_{shear}} = \frac{1}{t_1 E_1} + \frac{1}{t_2 E_2} + \frac{1}{t_1 E_3} + \frac{1}{t_2 E_3} + \\
+\frac{32(t_1+t_2)(1+\nu_3)}{9 \pi {E_3} d^2} +
+ \frac{8({t_2}^3 + 5 t_1 {t_2}^2 + 5 t_2 {t_1}^2 + {t_1}^3)}{5 \pi {E_3} d^4} 
+\end{multline}$$
+
+The second, from 1969, is shown below. This is also presented in Massera, citing Huth; and in Eremin, citing Chandregowda and Martins.
+
+$$ \frac{1}{K_{shear}} = \frac{2^{(t_1/d)^{0.85}}}{t_1} \left(\frac{1}{E_1} + \frac{3}{8E_3} \right) +
+\frac{2^{(t_2/d)^{0.85}}}{t_2} \left(\frac{1}{E_2} + \frac{3}{8E_3} \right) $$
+
+Massera also presents an equation for a double-shear configuration:
+
+$$ \frac{1}{K_{shear}} = \frac{1.25^{(t_1/d)}}{t_1} \left(\frac{1}{E_1} + \frac{3}{8E_3} \right) +
+\frac{1.25^{(t_2/d)}}{t_2} \left(\frac{1}{E_2} + \frac{3}{8E_3} \right) $$
+
+Two equations are also presented in Gunbring, citing Jarfall. The first varies wildly from the "1968" version presented in Huth. The second equation matches the "1969" version presented in Huth.
 
 #### Nelson, Bunin & Hart-Smith (1983)
-[NASA CR 3710](https://ntrs.nasa.gov/citations/19870001540)
-- Formula reproduced in Massera, citing original source
+[NASA CR 3710](https://ntrs.nasa.gov/citations/19870001540) - "Critical Joints in Large Composite Aircraft Structure"
 
-$$ Eq TBD $$
+Nelson et al used the Tate & Rosenfeld formulation to derive equations for the shear stiffness of both single- and double-shear configurations of composite bolted joints. They account for the possibility of unbalanced laminates with different in-plane stiffness values parallel to ("L") and perpendicular to ("LT") the loading direction. These formulas were also presented by Massera, citing the original source.
+
+For simplicity, I substitute an "equivalent Modulus" E_eq, as defined below, into my reproduction of the equations.
+
+$$ E_{eq} = \sqrt{E_L E_{LT}} $$
+
+The following quantities are also required: 
+- Shear modulus of bolt: $$ G_3 $$
+- Cross-sectional area of bolt:   $$ A_3 = \frac{\pi d^2}{4} $$
+- Section modulus of bolt:        $$ I_3 = \frac{\pi d^4}{64} $$ 
+
+**Single Shear:**
+
+$$ 
+\frac{1}{K_{shear}} = \frac{2(t_1 + t_2)}{3 G_3 A_3} +
+ \frac{2(t_1 + t_2)}{t_1 t_2 E_3} + 
+ \frac{1}{t_1 (E_{eq})_1} +
+  \frac{1 + 3 \beta}{t_2 (E_{eq})_2}
+$$
+
+The term $$ \beta $$ represents the fraction of the bending moment on the bolt that is reacted by nonuniform bearing stresses across the thickness.
+- $$ \beta $$ = 0.15 for protruding head bolts
+- $$ \beta $$ = 0.5 for countersunk bolts
+
+**Double Shear:**
+
+$$ 
+\frac{1}{K_{shear}} = 
+ \frac{8 {t_2}^3 + 16 {t_2}^2 t_1 + 8 t_2 {t_1}^2 + {t_1}^3}{192 E_3 I_3} +
+ \frac{2t_2 + t_1}{3 G_3 A_3} +
+\frac{2 t_2 + t_1}{t_1 t_2 E_3} + \frac{1}{t_2 {(E_{eq}})_2} + \frac{2}{t_1 ({E_{eq}})_1}
+$$
 
 #### Huth (1984)
 "Influence of Fastener Flexibility on Load Transfer and Fatigue Life Predictions for Multirow Bolted and Riveted Joints". (German) LBF Report No. FB-172, Dissertation, Technische Universitat Munchen, 1984. [Library record](https://ntrl.ntis.gov/NTRL/dashboard/searchResults/titleDetail/N8516219.xhtml)
@@ -71,11 +111,11 @@ $$ Eq TBD $$
 $$ \frac{1}{K_{shear}} = \left(\frac{t_1 + t_2}{2d}\right)^a \cdot \left(\frac{b}{n} \right) \left(\frac{1}{t_1 E_1} + \frac{1}{n t_2 E_2} + \frac{1}{2 t_1 E_3} + \frac{1}{2 n t_2 E_3} \right) $$
 
 The configuration-specific parameters are as follows:
-- Single shear: n =1  
-- Double shear: n = 2  
-- Bolts in metal: a = 2/3 ; b = 3  
-- Rivets in metal: a = 2/5 ; b = 2.2  
-- Bolts in GrEp: a = 2/3; b = 4.2
+- Single shear: n =1
+- Double shear: n = 2
+- Bolted metallic joint: a = 2/3 ; b = 3
+- Bolted composite (GrEp) joint: a = 2/3; b = 4.2
+- Riveted metallic joint: a = 2/5 ; b = 2.2
 
 Errata
 - The English translation presented in [ASTM STP 927 (paywall)](https://www.astm.org/stp927-eb.html) supposedly has a typo in the equation (see analyst64's comment in this [forum discussion](https://www.eng-tips.com/viewthread.cfm?qid=192705)).
@@ -102,7 +142,7 @@ The additional parameters for this equation are:
 - d_head: Fastener head diameter
 - p: Row pitch (spacing between fasteners in multi-row joint)
 - r: Number of rows
-- s: Fastener pitch
+- s: Fastener pitch (personal comment: assuming this means column spacing in multi-fastener joint)
 - cf: Fastener type correction factor
     - cf = 1 for aluminum rivets
     - cf = 8.2 for countersunk aluminum rivets
@@ -129,18 +169,20 @@ The additional parameters for this equation are:
 - Soderberg (2012) "A finite Element Method for Calculating Load Distributions in Bolted Joint Assemblies" 
     - Master's thesis, Linkoping University 
     - [Library record](http://urn.kb.se/resolve?urn=urn:nbn:se:liu:diva-81739)
-- Massera (2019) "Analytical and Numerical Investigation of Multi-Fastener Joints in Composite Structures" 
-    - Master's thesis, partnership with German Aerospace Center (DLR)
-    - [Library record](https://elib.dlr.de/128454/)
 - Martins (2017) "Influence of types of discrete modelling of fasteners in FEM models"
     - Proc. Int. Conf. on NAFEMS World Congress
     - [Library record](https://www.researchgate.net/publication/321058719_Influence_of_Types_of_Discrete_Modelling_of_Fasteners_in_FEM_Models)
 - Chandregowda (2018) "Evaluation of fastener stiffness modelling methods for aircraft structural joints"
     - American Institute of Physics, Proceedings of the First International Conference on Design, Materials and Manufacture (ICDEM 2018)
     - [Library record](https://doi.org/10.1063/1.5029577)
+- Massera (2019) "Analytical and Numerical Investigation of Multi-Fastener Joints in Composite Structures" 
+    - Master's thesis, partnership with German Aerospace Center (DLR)
+    - [Library record](https://elib.dlr.de/128454/)
 - Eremin (2021) "Methods for flexibility determination of bolted joints: empirical formula review"
     - Journal of Physics Conference Series, 19th International Conference "Aviation and Cosmonautics" (AviaSpace-2020)
     - [Library record](https://iopscience.iop.org/article/10.1088/1742-6596/1925/1/012058)
+
+(to be discussed in future "part 2" post)
 - Rutman (2009) "Fastener Modeling for Joining Composite Parts"
     - Americas Virtual Product Development Conference
     - Provides formula for rotational stiffness

@@ -1,0 +1,13 @@
+---
+layout: default
+---
+
+<header>
+  {% if site.theme_config.show_navbar == true %}
+  {% include horizontal_list.html collection=site.data.home.navbar_entries %}
+  <div class="dashed"></div>
+{% endif %}
+</header>
+
+<h2>{{ page.title }}</h2>
+{% include card_list.html collection=site.data.home.project_entries %}

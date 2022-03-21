@@ -14,3 +14,5 @@ layout: post
   - CH 8.2 - Statistical Methods
 - Excel T99 function _bad_
   - Unsure what this is. Might be unsupported at this point. Student T-test w/ 99% confidence interval?
+- NASA-STD-5020, Appendix A.2, Table 5 (Two-Sided 90/95
+Tolerance Limit Factors for a Normal Distribution, Odeh and Owen, 1980)

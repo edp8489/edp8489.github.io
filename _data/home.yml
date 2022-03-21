@@ -3,9 +3,10 @@ navbar_entries:
     url: /
   - title: About Me
     url: about
-
   - title: Articles
     url: posts
+  - title: Portfolio
+    url: portfolio
 
 footer_entries:
   - title: Linkedin

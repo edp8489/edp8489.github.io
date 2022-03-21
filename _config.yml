@@ -9,7 +9,6 @@ google_analytics: G-QEYP0WGDX8
 
 # theme config
 permalink: /:slug
-favicon: "" # relative path to site's favicon
 
 remote_theme: abhinavs/moonwalk
 theme_config:
@@ -28,8 +27,8 @@ theme_config:
   show_misc_list: false # show generic vertical list for misc details, add _data/home.yml
   # options for "home" page
   home:
-    title_projects: Portfolio
-    title_blog: Articles
+    title_projects: Featured Projects
+    title_blog: Featured Posts
     title_misc_list: Details
     title_old_projects: Inactive Projects
 

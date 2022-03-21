@@ -2,6 +2,7 @@
 layout: post
 title: "Modeling Fastener Flexibility, pt 1: Theory"
 tags: [featured]
+date: 2022-03-01
 ---
 
 A lot of my work revolves around analyzing bolted joints. Every time I dig into a problem, I'm floored by the amount of research that has gone into characterizing every aspect of their behavior over the last 70+ years. After spending the better part of a day chasing down the original reference and *correct* equation for something (and finding two different incorrect versions in the process), I realized documenting everything in one place would be a great post topic for my fledgling blog! 
@@ -10,7 +11,9 @@ This post aims to summarize the various empirically-derived equations used to re
 
 (It's optimistically titled "part 1" because I plan to write a series of future posts where I use open-source finite element programs to model test coupons and compare the load distribution results against the results published in some of the modern studies referenced here.)
 
-## Stiffness Formulations
+**Contents**
+* TOC
+{:toc}
 ### Nomenclature
 First, some nomenclature. I standardized the subscript terms for each equation.
 
@@ -24,6 +27,7 @@ First, some nomenclature. I standardized the subscript terms for each equation.
 - t: Joint member thickness [in or m]
 - d: Bolt diameter (in or m)
 
+### Stiffness Formulations
 #### Tate & Rosenfeld (1946)
 [NACA TN 1051](https://ntrs.nasa.gov/citations/19930081668) - "Preliminary investigation of the loads carried by individual bolts in bolted joints"
 - Used as the basis of derivation for the Boeing and Nelson methods.
@@ -150,7 +154,7 @@ The additional parameters for this equation are:
 
 (Personal comment: No guidance is given for values of *p* or *s* to use if the joint contains a single row or single column of fasteners. Based on engineering judgment I'd use a value of 4*d in these situations.)
 
-## References (& Modern Research)
+### References (& Modern Research)
 - Jarfall (1983) "Shear loaded fastener installations"
     - Saab Aircraft Division, Report SAAB KH R-3360
     - Published in International Journal of Vehicle Design, 1986 Vol 7 Issue 3-4 [(paywall)](https://www.inderscienceonline.com/doi/abs/10.1504/IJVD.1986.061155)

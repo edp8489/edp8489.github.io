@@ -2,6 +2,19 @@
 layout: post
 ---
 
+### MIL-HDBK-5/MMPDS Methods
+*Sec 9.1.5, Summary*
+> Brief descriptions of procedures that [are] used most frequently ... are given in Section 9.5, 9.6, and 9.7. More detailed descriptions of these and other statistical techniques and tables in their various forms can be found in a number of workbooks and texts; Reference 9.1.5 is a particularly useful one.
+
+Ref 9.1.5: 
+
+Highlights:
+- A T99 value is a statistically computed, one-sided lower tolerance limit, representing a 95 percent confidence lower limit on the first percentile of the distribution. 
+- A T90 value is a statistically computed, one-sided lower tolerance limit, representing a 95 percent lower confidence limit on the tenth percentile of the distribution.
+- The minimum sample size required for the direct computation of T99 and T90 values (from which A and B-basis design properties are established) is 100. These 100 observations must include data from at least 10 heats and lots.
+- If the sample cannot be described by a Pearson1 or Weibull distribution, the T99 and T90 values must be computed by nonparametric (distribution free) means, which can only be done if there are at least 299 observations.
+
+## References
 - NIAR ASAP spreadsheet [Direct download](https://agate.niar.wichita.edu/Materials/ASAP_2004_v1.xls)
   - AGATE Statistical Analysis Program
   - Dig into methods they use

@@ -23,7 +23,7 @@ A year or so back, a revision of the internal bolted joint tool we use at work i
     - [Document link](https://www.esmats.eu/amspapers/pastpapers/pdfs/2016/whittaker.pdf)
 - [NASA-STD-5020](https://standards.nasa.gov/standard/nasa/nasa-std-5020) "Requirements for Threaded Fastening Systems in Spaceflight Hardware"
 - Budynas & Nisbett, "Shigley's Mechanical Engineering Design (8th edition)", 2006, McGraw-Hill, ISBN 978-0073312606 
-  - Chapter 8, section ?
+  - Chapter 8
 - MIL-HDBK-5J
 
 ## Background 
@@ -65,41 +65,58 @@ $$ P_{tot} = P_{pre} + n \phi P_{ext} $$
 
 where _n_ is a "load introduction factor" based on joint geometry and $$ \phi $$, denoted as _C_ in Shigley, is the joint stiffness factor and represents the stiffness ratio between the bolt and the joint members. For the purposes of this article it will be assumed that _n = 1_, simplifying to the Shigley equation.
 
-$$ \phi = \frac{k_b}{k_b + k_m} $$
+$$ \phi = C = \frac{k_b}{k_b + k_m} $$
 
-**Example load split (C factor) for joints of various materials and stackups**
+## Example load split for joints of various materials and stackups
+I tabulated _C_ for 16 different joint designs of varying materials and thicknesses. 
 - Bolt materials: Steel and Ti
-- Member materials: AL/AL, AL/Steel, Steel/Steel
+- Member materials: AL/AL, Steel/Steel
 - Member thickness pairs: 0.100, 0.125, 0.188, 0.250 [in]
 
-*Bolt (tensile) stiffness*  
-Simplified to $$ k_b = EA_{maj}/t_{tot} $$ for this example.
+*Bolt (tensile) stiffness* - Simplified for this example to:
 
-*Joint stiffness*  
-Simplified to $eq$ for identical Side A/Side B materials for this example. Refer to Shigley Sec ### for the full procedure to calculate this for joints with dissimilar side A/B thicknesses and materials.
+$$ k_b = \frac{EA_{maj}}{t_{tot}} $$
+
+*Joint member stiffness* - For identical Side A/Side B materials, where _A_ and _B_ are material-specific constants (Ref Shigley, Sec 8.5, Eq 8-23 and Table 8-8):
+
+$$ k_m = EdA \cdot exp({Bd/t_{tot}}) $$
+
+Refer to Shigley Sec 8.5, Eqs 8-20 through 8-22 for the full procedure to calculate this for joints with dissimilar side A/B thicknesses and materials.
 
 As can be seen from the table below, the bolt could easily carry **50-60%** of the external load for thin-flanged aluminum joints (typical of aerospace structures). 
 
 ![phi_table](assets/ti-ductility/phi_table.png)
 
-_Example: Max/Min preload developed in DIA .250 (M6) bolt at 80 &plusmn; 5 in-lbs [metric value]_
-- Lubricated: 
-- Unlubricated:
+## Example: Nom/Max preload developed in joint (with and without uncertainty)
+_DIA .250 (M6) bolt, 0.125 in AL member thicknesses, and 1000 lbf external load_  
+Unlubricated: 82.5 &plusmn; 7.5 in-lbs (MSFC-STD-486, Table III: 160 ksi passivated A286 fasteners w/ cadmium-plated nuts)
+- Ideal calculation
+  - K = 0.2
+  - $$ P_{pre} $$ (nom) = 1640 lbf
+  - % of Ftu = TBD
+  - C = 0.45
+  - $$ P_{tot} $$ (nom) = 2090 lbf
+- With uncertainty
+  - $$ c_{max} $$ = 1.09
+  - $$ \Gamma $$ = 0.35
+  - $$ P_{pre} $$ (max) = 2413 lbf
+  - $$ P_{tot} $$ (max) = 2863
 
-### Ti stress-strain
-Example bolt, NAS6404. Per spec, material is 160 ksi Ftu
-[MIL-HDBK-5J](http://everyspec.com/MIL-HDBK/MIL-HDBK-0001-0099/MIL_HDBK_5J_139/) AKA MMPDS-01
-Ti 6-4 (sec 5.4.1) per AMS 4965 or 4967, bar,
-165 ksi Ftu, 155 ksi Fty
-Show plot of stress-strain curve, plastic strain between yield and ultimate
-Stress-strain curve from MMPDS and AFWAL paper
-
-Compare to 4130/4340 steel (sec 2.3)
-160 ksi Ftu, 142 ksi Fty
-Show plot of stress-strain curve, plastic strain between yield and ultimate
-Stress-strain curve from AFWAL paper
+Lubricated: 70 &plusmn; 5 in-lbs (MSFC-STD-486, Table V: 160 ksi passivated A286 fasteners w/ dry film lubricated nuts)
+- Ideal calculation
+  - K = 0.12
+  - $$ P_{pre} $$ (nom) = 2333 lbf
+  - % of Ftu = TBD
+  - C = 0.45
+  - $$ P_{tot} $$ (nom) = 2783 lbf
+- With uncertainty
+  - $$ c_{max} $$ = 1.07
+  - $$ \Gamma $$ = 0.25
+  - $$ P_{pre} $$ (max) = 3123 lbf
+  - $$ P_{tot} $$ (max) = 3573 lbf
 
 ## Additional References
+- [MSFC-STD-486](https://standards.nasa.gov/standard/msfc/msfc-std-486) "Standard, Threaded Fasteners, Torque Limits For"
 - [MSFC-STD-557](https://standards.nasa.gov/standard/msfc/msfc-std-557) "Threaded Fasteners, Titanium Alloys, Usage Criteria for Launch Vehicles and Spacecraft Applications" (2012)
 - [NASA-TM-106943](https://ntrs.nasa.gov/citations/19960012183) "Preloaded joint analysis methodology for space flight systems" (1995)
 - [NASA-RP-1228](https://ntrs.nasa.gov/citations/19900009424) "Fastener Design Manual" (1990)

@@ -2,11 +2,11 @@
 title: Ductility of Titanium Fasteners in Tension Applications
 layout: post
 ---
-Are titanium fasteners all they're cracked up to be?
+Are titanium fasteners all they're cracked up to be? Sorry for that terrible pun.
 
-_Sorry for that terrible pun. (No I'm not.)_
+_(No I'm not.)_
 
-A year or so back, a revision of the internal bolted joint tool we use at work introduced a mysterious strength correction factor for titanium fasteners. Tension strength was limited to 60% of specification rating. As I dug into the rationale behind this, I found a reference to NASA-TIP-133R, which, as far as I could tell, was an unpublished, internal NASA memo. I've spent multiple work afternoons diving into the details on this for various reasons, and decided it would make a great blog post.
+A year or so back, a revision of the internal bolted joint tool we use at work introduced a mysterious strength correction factor for titanium fasteners. Tension strength was limited to 60% of the specification rating. Digging into the rationale behind this, I found a reference to NASA-TIP-133R, which, as far as I could tell, was an unpublished, internal NASA memo. I've spent multiple work afternoons diving into the details on this for various reasons, and decided it would make a great blog post.
 
 (This post assumes familiarity with basic mechanical engineering concepts. See the *References* section for supporting material.)
 
@@ -28,8 +28,13 @@ A year or so back, a revision of the internal bolted joint tool we use at work i
 
 ## Background 
 Though the aforementioned NASA internal memo isn't publicly available, its author served as the mentor for Whittaker, who based his Master's thesis research on this topic. Key results of the research were summarized in a paper presented at the 43rd Aerospace Mechanisms Symposium; full-text of his thesis is also publicly available through the UCF libraries.
+
+TL;DR Titanium fasteners are more brittle than steel and therefore more susceptible to variations in preload and external load (which aren't always accounted for in nominal joint analysis).
+
+The rest of this post dives into the a more detailed approach to tension joint analysis than is offered in Shigley, which you'd typically learn in an undergraduate mechanical engineering program.
+
 ### Tension joint analysis
-NASA-STD-5020, Sec 4.4.5 summarizes this well (highlighted emphasis mine):
+NASA-STD-5020, Sec 4.4.5 summarizes this well (highlighted emphasis mine):  
 > When a fastened joint is completely separated prior to rupture, the total axial component of the
 load acting on the bolt is equal to the axial component of the applied load only. **If rupture occurs
 before separation, preload also acts on the bolt and should be included when assessing the
@@ -62,17 +67,24 @@ where _n_ is a "load introduction factor" based on joint geometry and $$ \phi $$
 
 $$ \phi = \frac{k_b}{k_b + k_m} $$
 
+**Example load split (C factor) for joints of various materials and stackups**
+- Bolt materials: Steel and Ti
+- Member materials: AL/AL, AL/Steel, Steel/Steel
+- Member thickness pairs: 0.100, 0.125, 0.188, 0.250 [in]
+
+*Bolt (tensile) stiffness*  
+Simplified to $$ k_b = EA_{maj}/t_{tot} $$ for this example.
+
+*Joint stiffness*  
+Simplified to $eq$ for identical Side A/Side B materials for this example. Refer to Shigley Sec ### for the full procedure to calculate this for joints with dissimilar side A/B thicknesses and materials.
+
+As can be seen from the table below, the bolt could easily carry **50-60%** of the external load for thin-flanged aluminum joints (typical of aerospace structures). 
+
+![phi_table](assets/ti-ductility/phi_table.png)
+
 _Example: Max/Min preload developed in DIA .250 (M6) bolt at 80 &plusmn; 5 in-lbs [metric value]_
 - Lubricated: 
 - Unlubricated:
-
-**Bolt stiffness**  
-**Joint stiffness**  
-**Example load split (C factor) for joints of various materials and stackups**
-- AL/AL, AL/Steel, Steel/Steel
-- 0.100, 0.125, 0.188, 0.250
-
-![phi_table](assets/ti-ductility/phi_table.png)
 
 ### Ti stress-strain
 Example bolt, NAS6404. Per spec, material is 160 ksi Ftu

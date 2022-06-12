@@ -68,7 +68,7 @@ where _n_ is a "load introduction factor" based on joint geometry and $$ \phi $$
 $$ \phi = C = \frac{k_b}{k_b + k_m} $$
 
 ## Example load split for joints of various materials and stackups
-I tabulated _C_ for 16 different joint designs of varying materials and thicknesses. 
+I tabulated _C_ for 16 different joint configurations of varying materials and thicknesses. 
 - Bolt materials: Steel and Ti
 - Member materials: AL/AL, Steel/Steel
 - Member thickness pairs: 0.100, 0.125, 0.188, 0.250 [in]
@@ -87,26 +87,47 @@ As can be seen from the table below, the bolt could easily carry **50-60%** of t
 
 ![phi_table](assets/ti-ductility/phi_table.png)
 
+### Material Strength References
+NAS620X: Alloy Steel ~4340 (ref MIL-HDBK-5J, Table 2.3.1.0(g2))
+Ftu: 160 ksi; Fty: 142 ksi
+
+NAS630X: A-286 cold worked (ref [Extreme Bolt, A286 Fasteners technical data](https://www.extreme-bolt.com/a-286-fasteners-flanges.html#ASTMA453Fasteners))  
+Ftu: 160 ksi; Fty: 120 ksi
+
+NAS640X: Ti 6Al-4V round bar per MIL-T-9047 (ref MIL-HDBK-5J, Table 5.4.1.0(d))  
+Ftu: 160 ksi; Fty: 150 ksi (DIA 0.501-1.000 in)
+
+Assuming a preload of 0.65*Fty:  
+For A286:  
+Fpre = 0.65(120000)0.0364 = 2839 lbf
+T = FKd = 3549(*K*)0.25 = 142 in-lbs (K = 0.2); 106 in-lbs (K = 0.15)
+
+For Ti:  
+Fpre = 0.65(150000)0.0364 = 3549 lbf  
+T = FKd = 3549(*K*)0.25 = 177 in-lbs (K = 0.2); 133 in-lbs (K = 0.15)
+
+
+
 ## Example: Nom/Max preload developed in joint (with and without uncertainty)
 _DIA .250 (M6) bolt, 0.125 in AL member thicknesses, and 1000 lbf external load_  
 Unlubricated: 82.5 &plusmn; 7.5 in-lbs (MSFC-STD-486, Table III: 160 ksi passivated A286 fasteners w/ cadmium-plated nuts)
 - Ideal calculation
   - K = 0.2
   - $$ P_{pre} $$ (nom) = 1640 lbf
-  - % of Ftu = TBD
+  - % of Ftu = 27%
   - C = 0.45
   - $$ P_{tot} $$ (nom) = 2090 lbf
 - With uncertainty
   - $$ c_{max} $$ = 1.09
   - $$ \Gamma $$ = 0.35
   - $$ P_{pre} $$ (max) = 2413 lbf
-  - $$ P_{tot} $$ (max) = 2863
+  - $$ P_{tot} $$ (max) = 2863 lbf
 
 Lubricated: 70 &plusmn; 5 in-lbs (MSFC-STD-486, Table V: 160 ksi passivated A286 fasteners w/ dry film lubricated nuts)
 - Ideal calculation
   - K = 0.12
   - $$ P_{pre} $$ (nom) = 2333 lbf
-  - % of Ftu = TBD
+  - % of Ftu = 38%
   - C = 0.45
   - $$ P_{tot} $$ (nom) = 2783 lbf
 - With uncertainty
@@ -124,3 +145,5 @@ Lubricated: 70 &plusmn; 5 in-lbs (MSFC-STD-486, Table V: 160 ksi passivated A286
 - [NASA-CR-357](https://ntrs.nasa.gov/citations/19660005495) "Evaluation of fasteners and fastener materials for space vehicles" (1966)
 - NASA-TIP-133R "Concerns with the Use of Titanium Fasteners" (2003)
   - Internal memo from F. Gross, NASA Materials Engineering Branch
+- [NAS4003](https://ntrl.ntis.gov/NTRL/dashboard/searchResults/titleDetail/NAS4003.xhtml) "Fasteners, A286 CRES, Externally Threaded, 160ksi Ftu, 95ksi Fsu, 1000F"
+- [NAS4004](https://ntrl.ntis.gov/NTRL/dashboard/searchResults/titleDetail/NAS4004.xhtml) "Fasteners, 6AL-4V Titanium Alloy, Externally Threaded, 160ksi Ftu, 95ksi Fsu, 450F"

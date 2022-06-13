@@ -34,6 +34,10 @@ TL;DR Titanium fasteners are more brittle than steel and therefore more suscepti
 The rest of this post dives into the a more detailed approach to tension joint analysis than is offered in Shigley, which you'd typically learn in an undergraduate mechanical engineering program.
 
 ### Tension joint analysis
+The total tension load in a bolted joint depends on the several factors: the applied/external load (obviously), the preload, joint member stiffnesses, and preload variations due to various uncertainties. In the simplest case, you assemble the joint hand-tight (aka with zero preload) and the bolt load is equal to the applied load. Margin calculation is straightforward. 
+
+However, if the joint is preloaded, the total load acting on the bolt can easily exceed the expected nominal value, if various sources of uncertainties aren't accounted for in analysis.
+
 NASA-STD-5020, Sec 4.4.5 summarizes this well (highlighted emphasis mine):  
 > When a fastened joint is completely separated prior to rupture, the total axial component of the
 load acting on the bolt is equal to the axial component of the applied load only. **If rupture occurs
@@ -83,7 +87,7 @@ $$ k_m = EdA \cdot exp({Bd/t_{tot}}) $$
 
 Refer to Shigley Sec 8.5, Eqs 8-20 through 8-22 for the full procedure to calculate this for joints with dissimilar side A/B thicknesses and materials.
 
-As can be seen from the table below, the bolt could easily carry **50-60%** of the external load for thin-flanged aluminum joints (typical of aerospace structures). 
+As can be seen from the table below, the bolt could easily carry up to **50-60%** of the external load for thin-flanged aluminum joints (typical of aerospace structures). 
 
 ![phi_table](assets/ti-ductility/phi_table.png)
 

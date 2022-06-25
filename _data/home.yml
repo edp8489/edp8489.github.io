@@ -16,6 +16,9 @@ footer_entries:
     url: https://github.com/edp8489
 
 project_entries:
+  - title: Countersunk Joint Data Viewer
+    url: https://edp8489.github.io/csk_knockdown_tool
+    desc: Visualize strength data and associated nondim. knockdown factors for countersunk fasteners of varying materials and head styles. References MIL-HDBK-5J / MMPDS-01 data.
   - title: Galvanic Compatibility
     url: https://edp8489.github.io/galvanic_compatibility/
     desc: Visualize the potential for galvanic corrosion between pairs of dissimilar metals and recommended surface treatments for each. References MIL-STD-889-C.

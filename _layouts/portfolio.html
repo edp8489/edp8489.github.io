@@ -9,5 +9,9 @@ layout: default
 {% endif %}
 </header>
 
-<h2>{{ page.title }}</h2>
+<h2 align="center">{{ page.title }}</h2>
+<h3>Recent</h3>
 {% include card_list.html collection=site.data.home.project_entries %}
+
+<h3>Archived</h3>
+{% include card_list.html collection=site.data.home.old_project_entries %}

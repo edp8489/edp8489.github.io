@@ -7,5 +7,5 @@ Effects of Bearing/Bypass Load Interaction on Laminate Strength.
 https://apps.dtic.mil/sti/citations/ADA108006
 
 Approaches:
-- Fbr (4% offset) & FHC
+- Fbry (4% offset) & FHC
 - Fbru & OHC

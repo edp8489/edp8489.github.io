@@ -85,21 +85,21 @@ $$ k_b = \frac{EA_{maj}}{t_{tot}} $$
 
 $$ k_m = EdA \cdot exp({Bd/t_{tot}}) $$
 
-Refer to Shigley Sec 8.5, Eqs 8-20 through 8-22 for the full procedure to calculate this for joints with dissimilar side A/B thicknesses and materials.
+Refer to Shigley Sec 8.5, Eqs 8-20 through 8-22 for the full procedure to calculate member stiffness for joints with dissimilar side A/B thicknesses and materials.
 
 As can be seen from the table below, the bolt could easily carry up to **50-60%** of the external load for thin-flanged aluminum joints (typical of aerospace structures). 
 
 ![phi_table](assets/ti-ductility/phi_table.png)
 
 ### Material Strength References
-NAS620X: Alloy Steel ~4340 (ref MIL-HDBK-5J, Table 2.3.1.0(g2))
-Ftu: 160 ksi; Fty: 142 ksi
+NAS620X: Alloy Steel 4340  
+Ftu: 160 ksi; Fty: 142 ksi (ref MIL-HDBK-5J, Table 2.3.1.0(g2))
 
-NAS630X: A-286 cold worked (ref [Extreme Bolt, A286 Fasteners technical data](https://www.extreme-bolt.com/a-286-fasteners-flanges.html#ASTMA453Fasteners))  
-Ftu: 160 ksi; Fty: 120 ksi
+NAS630X: A-286 cold worked  
+Ftu: 160 ksi; Fty: 120 ksi (ref [Extreme Bolt, A286 Fasteners technical data](https://www.extreme-bolt.com/a-286-fasteners-flanges.html#ASTMA453Fasteners))  
 
-NAS640X: Ti 6Al-4V round bar per MIL-T-9047 (ref MIL-HDBK-5J, Table 5.4.1.0(d))  
-Ftu: 160 ksi; Fty: 150 ksi (DIA 0.501-1.000 in)
+NAS640X: Ti 6Al-4V   
+Ftu: 160 ksi; Fty: 150 ksi (ref MIL-HDBK-5J, Table 5.4.1.0(d), DIA 0.501-1.000 in)
 
 Assuming a preload of 0.65*Fty:  
 For A286:  

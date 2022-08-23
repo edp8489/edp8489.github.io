@@ -1,6 +1,7 @@
 ---
 title: Ductility of Titanium Fasteners in Tension Applications
 layout: post
+tags: [fasteners, joints]
 ---
 Are titanium fasteners all they're cracked up to be? Sorry for that terrible pun.
 
@@ -49,9 +50,9 @@ The nominal preload developed in the bolt is dependent on the applied torque, bo
 
 $$ P_{pre} = \frac{T}{Kd} $$
 
-where _d_ is the bolt major diameter and _K_ is a friction coefficient based on the thread condition. Common values of _K_ are 0.3 (black-oxide coated alloy steel); 0.15-0.2 (cadmium-plated, zinc-plated, "as-received" condition); and 0.12 (lubricated).
+where _d_ is the bolt major diameter and _K_ is a friction coefficient based on the thread condition. Common values of _K_ are 0.12 (lubricated); 0.15-0.2 (cadmium-plated, zinc-plated, "as-received" condition); and 0.3 (black-oxide coated alloy steel).
 
-The maximum and minimum preload values are influenced by the torque range allowed on the assembly drawing and accuracy limits associated with the torque application method. (ref NASA-STD-5020, Eqs 3 & 4)
+The maximum and minimum preload values are influenced by the upper and lower bounds of the torque range allowed per engineering and uncertainty associated with the torque application method. (ref NASA-STD-5020, Eqs 3 & 4)
 
 $$ {(P_{pre})}_{max/min} = c_{max/min} (1 \pm \Gamma) (P_{pre})_{nom} $$
 
@@ -67,25 +68,25 @@ Finally, the total load seen by a bolt is a combination of the preload and the e
 
 $$ P_{tot} = P_{pre} + n \phi P_{ext} $$
 
-where _n_ is a "load introduction factor" based on joint geometry and $$ \phi $$, denoted as _C_ in Shigley, is the joint stiffness factor and represents the stiffness ratio between the bolt and the joint members. For the purposes of this article it will be assumed that _n = 1_, simplifying to the Shigley equation.
+where _n_ is a "load introduction factor" based on joint geometry and $$ \phi $$, denoted as _C_ in Shigley, is the joint stiffness factor, which represents the stiffness ratio between the bolt and the joint members. For the purposes of this article it will be assumed that _n = 1_, simplifying to the Shigley equation.
 
 $$ \phi = C = \frac{k_b}{k_b + k_m} $$
 
 ## Example load split for joints of various materials and stackups
-I tabulated _C_ for 16 different joint configurations of varying materials and thicknesses. 
-- Bolt materials: Steel and Ti
-- Member materials: AL/AL, Steel/Steel
-- Member thickness pairs: 0.100, 0.125, 0.188, 0.250 [in]
-
 *Bolt (tensile) stiffness* - Simplified for this example to:
 
 $$ k_b = \frac{EA_{maj}}{t_{tot}} $$
 
-*Joint member stiffness* - For identical Side A/Side B materials, where _A_ and _B_ are material-specific constants (Ref Shigley, Sec 8.5, Eq 8-23 and Table 8-8):
+*Joint member stiffness* - For identical Side A/Side B materials, the member stiffness equation can be simplified to the following equation, where _A_ and _B_ are material-specific constants (Ref Shigley, Sec 8.5, Eq 8-23 and Table 8-8):
 
 $$ k_m = EdA \cdot exp({Bd/t_{tot}}) $$
 
-Refer to Shigley Sec 8.5, Eqs 8-20 through 8-22 for the full procedure to calculate member stiffness for joints with dissimilar side A/B thicknesses and materials.
+For joints with dissimilar side A/B thicknesses and/or materials - or any other variation in configuration - refer to Shigley Sec 8.5, Eqs 8-20 through 8-22 or NASA TM 106943, eqs 31 through 52 for alternate procedures to calculate member stiffness.
+
+I tabulated _C_ for 16 different joint configurations of varying materials and thicknesses. 
+- Bolt materials: Steel and Ti
+- Member materials: AL/AL, Steel/Steel
+- Member thickness pairs: 0.100, 0.125, 0.188, 0.250 [in] (2.5, 3.2, 4.8, 6.4 [mm])
 
 As can be seen from the table below, the bolt could easily carry up to **50-60%** of the external load for thin-flanged aluminum joints (typical of aerospace structures). 
 

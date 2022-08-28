@@ -34,6 +34,11 @@ TL;DR Titanium fasteners are more brittle than steel and therefore more suscepti
 
 The rest of this post dives into the a more detailed approach to tension joint analysis than is offered in Shigley, which you'd typically learn in an undergraduate mechanical engineering program.
 
+## Material Stress-Strain Curve Comparison
+- Recreated A286 cold-worked
+- Recreated AISI 4340
+- Ti 6AL-4V, solution aged, e'u
+
 ### Tension joint analysis
 The total tension load in a bolted joint depends on the several factors: the applied/external load (obviously), the preload, joint member stiffnesses, and preload variations due to various uncertainties. In the simplest case, you assemble the joint hand-tight (aka with zero preload) and the bolt load is equal to the applied load. Margin calculation is straightforward. 
 

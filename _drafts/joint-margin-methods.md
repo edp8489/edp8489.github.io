@@ -126,7 +126,7 @@ $$ R_s = \frac{SF*P_s}{Bolt Shear Allowable} $$
 
 $$ R_t = \frac{P_b}{Bolt Tension Allowable} $$  
 
-*Note: The printed equation for Rt used "Bending Allowable" in the denominator; I believe this is a typo since bending is ignored in this case. Bruhn is cited as the reference for this section; the interaction equation below matches what is shown in Bruhn section D1.8 (eq D1.1), which confirms that the Rt denominator should be the tension allowable, not bending.*
+*Note: The printed equation for Rt used "Bending Allowable" in the denominator; I believe this is a typo since bending is ignored in this case. Bruhn is cited as the reference for this section; the interaction equation matches what is shown in Bruhn section D1.8 (eq D1.1), which confirms that the Rt denominator should be the tension allowable, not bending.*
 
 *Shear-Tension-Bending (Eqs 60 - 62)*
 

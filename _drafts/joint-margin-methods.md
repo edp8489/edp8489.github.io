@@ -13,6 +13,7 @@ When working on a different post, I ended up on a tangent where I dove into the 
 - [NASA-TM-106943](https://ntrs.nasa.gov/citations/19960012183) "Preloaded joint analysis methodology for space flight systems" (1995)
 - [NASA-STD-5020](https://standards.nasa.gov/standard/nasa/nasa-std-5020) "Requirements for Threaded Fastening Systems in Spaceflight Hardware"
 - Budynas & Nisbett, "Shigley's Mechanical Engineering Design (8th edition)", 2006, McGraw-Hill, ISBN 978-0073312606. (Chapter 8)
+- Bruhn, E.F., "Analysis and Design of Flight Vehicle Structures", 1973, Tri-State Offset Company.
 
 ## Assumptions and Limitations (in work)
 - Primarily focused on tension loads
@@ -118,13 +119,14 @@ $$ {MS}_{sep} = \frac{P_{0,min}}{(FF)(SF_{sep})P_{ext}} - 1 $$
 Interaction equations are given for combined shear + tension loading and for shear + tension + bending (e.g. double-shear lug-clevis joints or single-shear joints with large shims). A footnote provides the caveat that the interaction equations are intended for joints with minimal shear loads compared to the axial loads (preload included).
 
 *Shear-Tension (Eqs 56 - 59)*  
-*Note: The printed equation for Rt used "Bending Allowable" in the denominator; I believe this is a typo since bending is ignored in this equation.* Action - chase down Bruhn reference for this equation and confirm typo vs intended.
 
 $$ R_t^2 + R_s^3 \le 1.0 $$
 
-$$ R_t = \frac{P_b}{Bolt Tension Allowable} $$
+$$ R_s = \frac{SF*P_s}{Bolt Shear Allowable} $$
 
-$$ R_s = \frac{SF*P_s}{Bolt Shear Allowable} $$  
+$$ R_t = \frac{P_b}{Bolt Tension Allowable} $$  
+
+*Note: The printed equation for Rt used "Bending Allowable" in the denominator; I believe this is a typo since bending is ignored in this case. Bruhn is cited as the reference for this section; the interaction equation below matches what is shown in Bruhn section D1.8 (eq D1.1), which confirms that the Rt denominator should be the tension allowable, not bending.*
 
 *Shear-Tension-Bending (Eqs 60 - 62)*
 
@@ -132,15 +134,12 @@ $$ (R_t + R_b)^2 + R_s^3 \le 1.0 $$
 
 The bolt bending allowable is either an allowable moment - if that data exists for the specific fastener - or a stress based on the modulus of rupture of the bolt material. In the text, NSTS-08307 and Bruhn are cited for this approach. 
 
-Chasing down the Bruhn reference *(I should get hazard pay for this)* shows a mix of approaches. Some tables in section D1.7 provide ultimate tensile, shear, and moment loads for various bolt sizes and materials. Table D1.2a provides an ultimate bending stress, which is estimated based on Cozzone's method for plastic bending (discussed in section C3.4).
+Chasing down the Bruhn reference *(I should get hazard pay for this)*, section D1.7, Tables D1.1 and D1.2a provide ultimate tensile, shear, and moment loads for various bolt sizes and materials. The allowable moment is calculated using the bolt plastic bending strength (aka "modulus of rupture"), which is estimated using Cozzone's method for plastic bending discussed in section C3.4.
  
 $$ F_b = f_m + f_0*(k-1) $$
 
 k = 1.7 for solid round section  
 > Fb may be a yield or ultimate modulus. For yield, *fm* = material yield stress. For ult, *fm* = material ult stress. Regardless of which is used, the corresponding *f0* must be known before *Fb* can be determined.
-
-(Bruhn D1.14 cites ref 4 for methods)
-
 
 ### NASA STD 5020
 Two sets of equations are provided for shear-tension-bending interaction, depending on whether or not plastic bending is accounted for and whether the bolt shank or threads are in the shear plane. 

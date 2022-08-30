@@ -129,6 +129,13 @@ $$ R_s = \frac{SF*P_s}{Bolt Shear Allowable} $$
 $$ (R_t + R_b)^2 + R_s^3 \le 1.0 $$
 
 The bolt bending allowable is based on the modulus of rupture (refs NSTS-08307 and Bruhn).
+Bruhn D1.7, Table D1.2a. Bending allowable moment uses Fb - modulus of rupture - calculated per chapter C3
+C3.4 - Cozzone plastic bending
+Fb = fm + f0(k-1)
+k = 1.7 for solid round section
+"Fb may be a yield or ultimate modulus. For yield, Fm = material yield stress. For ult, Fm = material ult stress. Regardless of which is uses, the corresponding f0 must be known before Fb can be determined.
+
+(Bruhn D1.14 cites ref 4 for methods)
 
 
 ### NASA STD 5020

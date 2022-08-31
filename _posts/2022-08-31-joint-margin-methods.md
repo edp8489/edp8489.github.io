@@ -1,7 +1,7 @@
 ---
 title: Joint Strength Analysis - Battle of the Methodologies
 layout: post
-date: 2022-08-24
+date: 2022-08-31
 tags: [fasteners, joints]
 ---
 
@@ -12,14 +12,11 @@ When working on a different post, I ended up on a tangent where I dove into the 
 ## References
 - [NASA-TM-106943](https://ntrs.nasa.gov/citations/19960012183) "Preloaded joint analysis methodology for space flight systems" (1995)
 - [NASA-STD-5020](https://standards.nasa.gov/standard/nasa/nasa-std-5020) "Requirements for Threaded Fastening Systems in Spaceflight Hardware"
-- Budynas & Nisbett, "Shigley's Mechanical Engineering Design (8th edition)", 2006, McGraw-Hill, ISBN 978-0073312606. (Chapter 8)
+- Budynas & Nisbett, "Shigley's Mechanical Engineering Design (9th edition)", 2011, McGraw-Hill. (Chapter 8)
 - Bruhn, E.F., "Analysis and Design of Flight Vehicle Structures", 1973, Tri-State Offset Company.
 
-## Assumptions and Limitations (in work)
-- Primarily focused on tension loads
-- Calculations performed for ambient conditions; no consideration of thermal effects on preload
-- Contrived example
-- Discussion at end about shear-tension interaction equations
+## Assumptions and Limitations
+Example calculations are performed at ambient conditions; no consideration of thermal effects, preload relaxation, or creep on preload. Load values used in the examples are entirely contrived and any resemblance to real-world situations are purely coincidental.
 
 ## Terminology
 Standardize terminology, since it varies across each document.
@@ -42,33 +39,64 @@ Figure 1 provides a flowchart to determine the appropriate factor to use based o
 ### Fitting Factor
 NASA-STD-5020 introduces discussion of a "fitting factor" (FF = 1.15) to account for uncertainties in how load is transferred between components. This is applied in addition to the factor of safety for all joint checks. The factor may be reduced to 1.0 if the joint is tested to ultimate load.
 
-
-## Joint Member Stiffness  
+## Joint Member Stiffness
 ### Shigley (in work)
-Shigley provides stiffness equations for joint members clamped between a protruding head bolt + nut combination. A simplified equation is provided for symmetric joints where the two clamped members are of the same thickness and material.
+Bolt stiffness is calculated as the sum of two springs in series, using basic diameter in the area calculation for the shank portion and the tensile stress area for the threaded portion.
+
+A generalized procedure is provided to calculate the joint member stiffness for two configurations: 1) protruding head bolt + nut and 2) protruding head bolt tapped into the bottom member. No discussion of countersunk bolts is provided. The total joint member stiffness is again presented as the sum of springs in series; you must first draw out the joint diagram, determine the dimensions for the frumtum portion intersecting each layer, calculate individual member stiffnesses for each layer of the joint, then add the reciprocals to determine the overall joint stiffness constant. The assumption of a 30 degree cone angle is recommended.
+
+A simplified equation (Eq 8-23) is provided for symmetric joints where the two clamped members are of the same material. Associated contants are provided for steel, aluminum, and copper joint members.
 
 ### NASA TM-106943  
-Joint member stiffness equations are provided for four possible configurations.  
-**Configuration 1** - Nut and bolt; protruding head bolt  
-**Configuration 2** - Nut and bolt; flat head countersunk into first joint member  
+Bolt stiffness is calculated based on basic diameter only.
+
+Joint member stiffness equations are provided for four possible configurations and accommodate an arbitrary number of layers of various thicknesses and materials. The text states that the Shigley method was used to develop each configuration, using a cone angle of 45 degrees.    
+**Configuration 1** - Bolt and nut; protruding head bolt  
+**Configuration 2** - Bolt and nut; flat head countersunk into first joint member  
 **Configuration 3** - Protruding head bolt threaded into bottom member  
 **Configuration 4** - Flat head bolt countersunk into first member and threaded into bottom member
 
+## Torque-Preload Relationship
+### Shigley
+The equations presented calulate the nominal bolt preload, allowing for variation due to lubrication. Nut factor, *K*, values range from 0.09 to 0.30 for various lubricants/coatings. The methodology foes not account for min/max variation in preload due to allowed application tolerances or uncertainty associated with the measurement method.
 
-## Torque-Preload relationship (in work)
-### Shigley (in work)
-- Allows for variation in preload due to various types of lubrication (K values)
-- Does not account for min/max variation in preload due to tolerances and application method
+$$ P_{0} = \frac{T}{Kd} $$
 
-### NASA TM-106943 (in work)
-- Provides equations to develop minimum, nominal, and maximimum preload values
-- Introduces a "load introduction factor," *n*, based on joint configuration that also affects the portion of the external load carried by the bolt. (See NSTS 08307, NASA TM-108377, or VDI 2230 for additional details)
-- Guidance is to only apply safety factors to the portion of the external load carried by the bolt; factors are not applied to the preload since uncertainty is already accounted for when calculating min/max values
-- Bolt tension margin calculations (yield/ultimate) use the bolt strength as the allowable.
+where _d_ is the bolt major diameter and _K_ is a friction coefficient based on the thread condition.
+
+There is a brief discussion that wrench torque is not a good indicator of preload and that direct measurement of bolt elongation is preferred. However, no data associated with the uncertainty of either method is provided.
+
+Preload recommendations are provided for non-permanent connections, reused fasteners, and permanent connections. The values are specified as percentages of the bolt proof load; if the proof load is unknown, an estimate of 0.85*Fty is recommended.
+
+*Non-permanent connections, reused fasteners* - Recommended preload is 75% of bolt proof load (approximately 0.64*Fty).
+
+*Permament connections* - Recommended preload is 90% of bolt proof load (approximately 0.77*Fty).
+
+### NASA TM-106943
+Equations are provided to calculate the minimum, nominal, and maximimum preload values. Uncertainty, *u*, associated with measurement method is briefly discussed, citing values of +/- 0.05 for instrumented bolts and +/- 0.25 for a manually operated torque wrench on lubricated bolts (reference to NSTS-08307). A "load introduction factor," *n*, based on joint geometry is added to the calculation for the portion of the external load carried by the bolt. A general recommendation is made that preload should be 0.65*Fty.
+
+For brevity, the equations are omitted, since they are expanded upon in the next section.
+
+### NASA STD 5020
+Equations for developing minimum/nominal/maximimum preload values are largely the same as in TM-106943, though two new terms are introdiced. Two factors, *c max/min*, are introduced to account for allowed variation in the applied torque. A second term is added to the minimum preload equation to account for material creep. 
+
+$$ {(P_{0})}_{max} = c_{max} (1 + \Gamma) (P_{0})_{nom} + P_{\delta T, max} $$
+
+$$ {(P_{0})}_{min} = c_{min} (1 - \Gamma) (P_{0})_{nom} - P_{\delta T, min} - P_{relax} - P_{creep} $$
+
+where _c_ is based on the applied torque range, and $$ \Gamma $$ is the uncertainty associated with the chosen torque application method. For example, if the assembly drawing states the torque range as $$ T \pm t $$ in-lbs (Nm), then:
+
+$$ c_{max/min} = \frac{T \pm t}{T} $$
+
+Uncertainty values ranging from 0.10 to 0.35 are provided in Table 3 for various application methods. NSTS-08307, NASA TM-108377, or VDI 2230 are referenced for additional details related to calculating the load introduction factor, *n*.
+
+## Margin Calculations
+### NASA TM-106943
+Safety factors are only applied to the portion of the external load carried by the bolt; factors are not applied to the preload since uncertainty is already accounted for when calculating the min/max values.
+
+Bolt tension margin calculations (yield/ultimate) use the bolt strength as the allowable.
 
 $$ P_{bolt} = P_{0,max} + (SF)(n)(\phi)(P_{ext}) $$
-
-*TBD - eq for Pbolt for joints with multiple fasteners*
 
 $$ P_{sep} = (1-n\phi)P_{ext} $$
 
@@ -76,17 +104,14 @@ $$ MS_{bolt} = \frac{P_{tu}}{P_{bolt}} - 1 $$
 
 $$ MS_{sep} = \frac{P_{0,min}}{SF_{sep} P_{sep}} - 1 $$
 
-### NASA STD 5020 (rev A or newer) (in work)
-- A complete rewrite of the methodology occurred in Rev A.
-- Equations for developing minimum/nominal/maximimum preload values are largely the same as in TM-106943.
-- Calculate theoretical loads, ***P'_***, to determine whether joint separates before rupture or ruptures before separation
-- Margin calculations apply safety factors to the full external load and use the applicable ***P'_*** as the allowable strength.
+### NASA STD 5020 (rev A or newer)
+A complete rewrite of the methodology presented in this document occurred in Rev A. First, you calculate two theoretical loads, ***P'_***, to determine which will occur first: joint separation or bolt rupture. Margin calculations apply safety factors to the full external load and use the applicable ***P'_*** value as the allowable strength.
 
-First, calculate the load at which the bolt will rupture (based on max preload and load share due to joint geometry) (Eq 10)
+The load at which the bolt will rupture (based on max preload and load share due to joint geometry) is given by (Eq 10) as
 
 $$ P'_{tu} = \frac{(P_{tu,allow} - P_{0,max})}{n \phi} $$
 
-and the load at which the joint will separate (also assuming maximum preload). (Eq 11)
+The load at which the joint will separate (also assuming maximum preload) is given by (Eq 11) as
 
 $$ P'_{sep} = \frac{P_{0,max}}{1-n\phi} $$ 
 
@@ -111,10 +136,7 @@ $$ {MS} = \frac{P'_{tu}}{(FF)(SF)P_{ext}} - 1 $$
 
 $$ {MS}_{sep} = \frac{P_{0,min}}{(FF)(SF_{sep})P_{ext}} - 1 $$
 
-## Example - Margin Comparison (in work)
-- DIA .250-28 fastener, NAS6404, 1500 lbf external load, 85 +/- 5 in-lbf
-
-## Shear-Tension interactions (in work)
+## Shear-Tension Interactions
 ### NASA TM 106943
 Interaction equations are given for combined shear + tension loading and for shear + tension + bending (e.g. double-shear lug-clevis joints or single-shear joints with large shims). A footnote provides the caveat that the interaction equations are intended for joints with minimal shear loads compared to the axial loads (preload included).
 
@@ -174,5 +196,9 @@ $$ (R_s)^{2.5} + \left(\frac{P_{tu}}{Tension Allowable}\right)^{1.5} + \frac{(SF
 
 $$ (R_s)^{1.2} + \left(\frac{P_{tu}}{Tension Allowable}\right)^2 + \frac{(SF)f_b}{F_b} \le 1 $$
 
-## Example - Margin Comparison (in work)
+## Example - Margin Comparisons
+### Static Tension Joint (in work)
+- DIA .250-28 fastener, NAS6404, 1500 lbf external load, 85 +/- 5 in-lbf
+
+### Shear-Tension Interaction (in work)
 - DIA .250-28 fastener, NAS6404, 1000 lbf tension, 1000 lbf shear, 85 +/- 5 in-lbf

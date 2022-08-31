@@ -80,6 +80,8 @@ For brevity, the equations are omitted, since they are expanded upon in the next
 ### NASA STD 5020
 Equations for developing minimum/nominal/maximimum preload values are largely the same as in TM-106943, though two new terms are introdiced. Two factors, *c max/min*, are introduced to account for allowed variation in the applied torque. A second term is added to the minimum preload equation to account for material creep. 
 
+$$ {P_{0}}_{nom} = \frac{T}{Kd} $$
+
 $$ {(P_{0})}_{max} = c_{max} (1 + \Gamma) (P_{0})_{nom} + P_{\delta T, max} $$
 
 $$ {(P_{0})}_{min} = c_{min} (1 - \Gamma) (P_{0})_{nom} - P_{\delta T, min} - P_{relax} - P_{creep} $$

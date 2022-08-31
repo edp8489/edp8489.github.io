@@ -40,7 +40,7 @@ Figure 1 provides a flowchart to determine the appropriate factor to use based o
 NASA-STD-5020 introduces discussion of a "fitting factor" (FF = 1.15) to account for uncertainties in how load is transferred between components. This is applied in addition to the factor of safety for all joint checks. The factor may be reduced to 1.0 if the joint is tested to ultimate load.
 
 ## Joint Member Stiffness
-### Shigley (in work)
+### Shigley
 Bolt stiffness is calculated as the sum of two springs in series, using basic diameter in the area calculation for the shank portion and the tensile stress area for the threaded portion.
 
 A generalized procedure is provided to calculate the joint member stiffness for two configurations: 1) protruding head bolt + nut and 2) protruding head bolt tapped into the bottom member. No discussion of countersunk bolts is provided. The total joint member stiffness is again presented as the sum of springs in series; you must first draw out the joint diagram, determine the dimensions for the frumtum portion intersecting each layer, calculate individual member stiffnesses for each layer of the joint, then add the reciprocals to determine the overall joint stiffness constant. The assumption of a 30 degree cone angle is recommended.
@@ -80,11 +80,11 @@ For brevity, the equations are omitted, since they are expanded upon in the next
 ### NASA STD 5020
 Equations for developing minimum/nominal/maximimum preload values are largely the same as in TM-106943, though two new terms are introdiced. Two factors, *c max/min*, are introduced to account for allowed variation in the applied torque. A second term is added to the minimum preload equation to account for material creep. 
 
-$$ {P_{0}}_{nom} = \frac{T}{Kd} $$
+$$ {(P_{0})}_{nom} = \frac{T}{Kd} $$
 
-$$ {(P_{0})}_{max} = c_{max} (1 + \Gamma) (P_{0})_{nom} + P_{\delta T, max} $$
+$$ {(P_{0})}_{max} = c_{max} (1 + \Gamma) (P_{0})_{nom} + P_{\Delta T, max} $$
 
-$$ {(P_{0})}_{min} = c_{min} (1 - \Gamma) (P_{0})_{nom} - P_{\delta T, min} - P_{relax} - P_{creep} $$
+$$ {(P_{0})}_{min} = c_{min} (1 - \Gamma) (P_{0})_{nom} - P_{\Delta T, min} - P_{relax} - P_{creep} $$
 
 where _c_ is based on the applied torque range, and $$ \Gamma $$ is the uncertainty associated with the chosen torque application method. For example, if the assembly drawing states the torque range as $$ T \pm t $$ in-lbs (Nm), then:
 

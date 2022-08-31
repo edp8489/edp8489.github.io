@@ -77,7 +77,7 @@ Equations are provided to calculate the minimum, nominal, and maximum preload va
 
 $$ {(P_{0})}_{max} = \frac{T}{Kd}(1 + u) + P_{\Delta T, max} $$
 
-$$ {(P_{0})}_{min} = \frac{T}{Kd}(1 - u) - P_{\Delta T, max} - P_{relax} $$
+$$ {(P_{0})}_{min} = \frac{T}{Kd}(1 - u) - P_{\Delta T, min} - P_{relax} $$
 
 $$ P_{relax} = 0.05 (P_0)_{min} $$
 

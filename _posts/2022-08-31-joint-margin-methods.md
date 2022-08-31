@@ -101,9 +101,48 @@ $$ c_{max/min} = \frac{T \pm t}{T} $$
 Uncertainty values ranging from 0.10 to 0.35 are provided for various application methods (see Table 3).
 
 ## Margin Calculations
-### NASA TM-106943
-Safety factors are only applied to the portion of the external load carried by the bolt; factors are not applied to the preload since uncertainty is already accounted for when calculating the min/max values.
+### Shigley
+*Bolt Strength*  
+No direct margin of safety equations are provided. Instead, a "factor of safety against yielding" is calculated using the bolt proof strength.
 
+$$ n_{yld} = \frac{(Proof Strength)A_t}{P_0 + \phi P_{ext}} $$
+
+Define the yield load by substituting Fty for proof strength and multiplying by the tensile stress area:
+
+$$ P_{ty} = F_{ty} A_t $$
+
+Then we can calculate a margin of safety by introducing the fitting factor discussed in NASA-STD-5020 and a yield factor of safety:
+
+$$ MS_{yld} = \frac{n_{yld}}{(FF)(SF_y)} - 1 $$
+
+$$ MS_{yld} = \frac{P_{ty}}{(FF)(SF_y)(P_0 + \phi P_{ext})} - 1 $$
+
+Using the earlier assumption that Proof Strength ~ 0.85*Fty introduces a constraint on the minimum value of SFy.
+
+$$ \frac{1}{SF_y} \le 0.85 $$
+
+$$ SF_y \ge 1.18 $$
+
+The same approach can be used for the ultimate margin, substituting Ftu and SFu as applicable.
+
+*Joint Separation*  
+A "factor of safety against joint separation" is calculated based on the assumption separation occurs when the portion of the external load carried by the joint members equals zero.
+
+*Note: I'm changing terminology to be consistent with the rest of this post. In the original text, Fi is used to represent bolt preload (P0 throughout this post) and P0 is used to represent the load at which the joint separates (changed to Psep below).* 
+
+$$ P_0 - (1 - \phi)P_{sep} = 0 $$
+
+$$ P_{sep} = \frac{P_0}{(1 - \phi)} $$
+
+$$ n_{sep} = \frac{P_{sep}}{P_{ext}} = \frac{P_0}{(1 - \phi)P_{ext}} $$
+
+This can then be rearranged into a margin of safety calculation by introducing the fitting factor and separation factor of safety discussed in NASA-STD-5020:
+
+$$ MS_{sep} = \frac{n_{sep}}{(FF)(SF_{sep})} - 1 $$
+
+$$ MS_{sep} = \frac{P_0}{(FF)(SF_{sep})(1 - \phi)P_{ext}} - 1 $$
+
+### NASA TM-106943
 Bolt tension margin calculations (yield/ultimate) use the bolt strength as the allowable.
 
 $$ P_{bolt} = (P_0)_{max} + (SF)(n)(\phi)(P_{ext}) $$
@@ -112,7 +151,11 @@ $$ P_{sep} = (1-n\phi)P_{ext} $$
 
 $$ MS_{bolt} = \frac{P_{tu}}{P_{bolt}} - 1 $$
 
+Safety factors are only applied to the portion of the external load carried by the bolt; factors are not applied to the preload since uncertainty is already accounted for when calculating the min/max values. Using the Shigley equations to derive the bolt strength margin ends up applying the safety factors to the entire bolt load, including the preload. This is appropriate since variations due to uncertainty (and relaxation, thermal effects, etc) are not accounted for.
+
 $$ MS_{sep} = \frac{(P_0)_{min}}{SF_{sep} P_{sep}} - 1 $$
+
+The form of the separation margin equation is identical to the one we derived using the Shigley equations (inclusion of the fitting factor aside), with the only major difference being the use of nominal preload (Shigley) vs minimum preload in the numerator.
 
 ### NASA STD 5020 (rev A or newer)
 A complete rewrite of the methodology presented in this document occurred in Rev A. First, you calculate two theoretical loads, ***P'_***, to determine which will occur first: joint separation or bolt rupture. Margin calculations apply safety factors to the full external load and use the applicable ***P'_*** value as the allowable strength.
@@ -144,7 +187,9 @@ Conversely, if $$ P'_{sep} > P'_{tu} $$ the bolt will rupture before the joint s
 $$ {MS} = \frac{P'_{tu}}{(FF)(SF)P_{ext}} - 1 $$
 
 **Joint Separation Margin (Eq 19)**  
-*Discussion about how this varies compared to TM-106943. Numerator is still minimum preload value; denominator now uses full external load rather than the fraction carried by the joint.*
+This equation varies drastically from the previous methods. The numerator is still minimum preload value; however, the denominator now uses the full external load rather than the fraction carried by the joint members.  
+
+*Note: This could be an interpretation error on my part. The margin calculation uses PtL (defined as "limit tensile load" in the front matter) in the denominator for this and the bolt strength margin calculation, with no further explanation. Based on similar presentation of the bolt shear margin, where PsL was clearly the applied shear load, I interpreted PtL to be the full external tension load.*
 
 $$ {MS}_{sep} = \frac{(P_0)_{min}}{(FF)(SF_{sep})P_{ext}} - 1 $$
 

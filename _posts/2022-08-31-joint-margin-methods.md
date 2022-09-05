@@ -147,6 +147,8 @@ Bolt tension margin calculations (yield/ultimate) use the bolt strength as the a
 
 $$ P_{bolt} = (P_0)_{max} + (SF)(n)(\phi)(P_{ext}) $$
 
+A new factor, *n*, is introduced to the portion of the external load carried by the bolt. This is referred to as the "loading plane factor" and is based on the total length of the clamped members and distance between the midplanes of the outermost members. This represents how effective the clamped members are at reacting the external load.
+
 $$ P_{sep} = (1-n\phi)P_{ext} $$
 
 $$ MS_{bolt} = \frac{P_{tu}}{P_{bolt}} - 1 $$

@@ -52,3 +52,13 @@ The material yield strength after cold working is equal to the true stress.
 
 The new ultimate strength after cold working can be calculated as
 $$ (F_{tu})_{cw} = \frac{F_tu}{1-w} $$
+
+## Draft content
+Datsko model for plastic portion of true stress - true strain diagram (reg Shigley sec 2-3)
+$$ \Sigma_T = \Sigma_0 (\epsilon_T^p)^m $$
+$$\sigma_0 $$ =  strain-strengthening coefficient  
+*m* = strain-strengthening exponent
+
+Ramberg-Osgood Model
+Front matter from MMPDS re: stress-strain curves
+Definition of % elongation

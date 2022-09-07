@@ -74,10 +74,10 @@ The new ultimate strength after cold working can be calculated as
 
 $$ (F_{tu})_{cw} = \frac{F_{tu}}{1-w} $$
 
-## Draft content
+## Parametric Stress-Strain Curve Models 
 
-**MMPDS 1.3.9, "Inelastic Stress-Strain response"**  
-The definition of this relationship does not specify whether the quantities used are *engineering* or *true* stress/strain, which has frustrated me to no end. The definition of Tensile Ultimate Stress (sec 1.4.4.4) provides the distinction that all values presented in the document are *engineering* stress and strain.
+**MIL-HDBK-5J / MMPDS-01 "Inelastic Stress-Strain response"**  
+The definition of this relationship has always frustrated me, since it does not specify whether the quantities used refer to *engineering* or *true* stress/strain. The definition of Tensile Ultimate Stress in Section 1.4.4.4 provides the distinction that all values presented in the document are *engineering* stress and strain.
 
 > ... all stresses are based on the original cross-sectional dimensions of a test specimen,
 without regard to the lateral contraction due to Poisson’s ratio effects. That is, all strains used herein are
@@ -98,12 +98,12 @@ This method was extended by Hill in NACA-TN-927 to use two modulus lines offset 
 
 $$ n = \frac{0.301}{\log_{10}{\left( \frac{F_{ty}}{\sigma_{0.1}} \right)}} $$
 
-A graphical approach to determining *n* is provided in MIL-HDBK-5J / MMPDS-01, Section 9.8.4.1.2 by plotting the two or more pairs of (engineering plastic strain, engineering stress) on log-log axes. An approximate value of *n* is the inverse of the slope of the straight line connecting the points.
+A graphical approach to determining *n* is provided in MIL-HDBK-5J / MMPDS-01, Section 9.8.4.1.2 by plotting two or more pairs of &lt;engineering plastic strain, engineering stress&gt; on log-log axes. An approximate value of *n* is the inverse of the slope of the straight line connecting the points.
 
 ![MIL-HDBK-5J, Fig 9.8.4.1.2](/assets/stress-strain/mmpds_ro_slope_method.png)
 
 $$ n \approx \left( \frac{\log_{10}{\epsilon^p_2} - \log_{10}{\epsilon^p_1}}
-{\log_{10}{\sigma_2} - \log_{10}{\sigma_1}} \right)^{-1} $$
+{\log_{10}{\sigma_2} - \log_{10}{\sigma_1}} \right) $$
 
 This method can be used to approximate the shape of the (engineering) stress-strain curve from yield through ultimate using Fty, Ftu, and the engineering plastic strain at ultimate stress.
 

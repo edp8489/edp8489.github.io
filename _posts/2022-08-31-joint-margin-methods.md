@@ -39,6 +39,8 @@ Figure 1 provides a flowchart to determine the appropriate factor to use based o
 ### Fitting Factor
 NASA-STD-5020 introduces an additional "fitting factor" (FF = 1.15) to account for uncertainties in how load is transferred between components. This is applied in addition to the factor of safety for all joint checks. The factor may be reduced to 1.0 if the joint is tested to ultimate load.
 
+*Note: The use of a fitting factor on all strength checks for components not tested to ultimate load is also legally required per [FAA 14 CFR 25.625](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-25/subpart-D/subject-group-ECFRff93ea3edba9270/section-25.625) for commercial aircraft design.*
+
 ## Joint Member Stiffness
 ### Shigley
 Bolt stiffness is calculated as the sum of two springs in series, using basic diameter in the area calculation for the shank portion and the tensile stress area for the threaded portion.

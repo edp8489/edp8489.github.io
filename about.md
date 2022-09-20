@@ -11,7 +11,7 @@ I studied aerospace engineering at MIT, earning bachelor's and master's degrees 
 
 After finishing my master's, I spent two years at a startup working on the preliminary design of composite structures for low-cost, expendable launch vehicles.
 
-In late 2016 I joined Blue Origin as a structures engineer for the [New Shepard](https://www.blueorigin.com/new-shepard/) Crew Capsule. I've provided design and analysis support for multiple vehicles multiple lifesycle phases, including involvement with verification activities in support of human flight certification. Along the way I've authored countless analysis packages. 
+In late 2016 I joined Blue Origin as a structures engineer for the [New Shepard](https://www.blueorigin.com/new-shepard/) Crew Capsule. I've provided design and analysis support for multiple vehicles across multiple lifesycle phases, including involvement with verification activities in support of human flight certification. Along the way I've authored countless analysis packages. 
 
 ## Motivation
 For any problem I've come across, countless others will as well. I want to share what I've learned with the hope that it may fill in a blank or save someone a bit of time on their engineering journey.

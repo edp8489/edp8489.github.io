@@ -46,25 +46,25 @@ AMS 5853: This specification comes in an electrode-melted, solution treated and 
 
 The Aerospace Structural Metals Handbook (volume II, 1972 edition; link at end of post) contains properties for sheet and bar at various conditions, including 130 ksi and 140 ksi bar (S-basis) per AMS 5731. 
 
-![a286-ams-props](/assets/ti-ductility/a286-ams-props.png)
+<img src="/assets/ti-ductility/a286-ams-props.png" alt="a286-ams-props" width=420>
 
 It also contains a table of producer typical properties for bar at various conditions.
 
-![a286-bar-props](/assets/ti-ductility/ASMH-II-A286-props.png)
+<img src="/assets/ti-ductility/ASMH-II-A286-props.png" alt="a286-bar-props" width=420>
 
 The handbook also provides (typical?) stress-strain curves through yield and ultimate for 157 ksi solution treated and aged sheet. The plastic strain at ultimate is above 25%.
 
-![a286-aged-sht-through-yld](/assets/ti-ductility/ASMH-II-A286-aged-sht-yld.png)
+<img src="/assets/ti-ductility/ASMH-II-A286-aged-sht-yld.png" alt="a286-aged-sht-through-yld" width=420>
 
-![a286-aged-sht-through-ult](/assets/ti-ductility/ASMH-II-A286-aged-sht-ult-epu.png)
+<img src="/assets/ti-ductility/ASMH-II-A286-aged-sht-ult-epu.png" alt="a286-aged-sht-through-ult" width=420>
 
 **NAS640X**: Titanium 6Al-4V per AMS 4928 or AMS 4967 (150 ksi Fty; 160 ksi Ftu per MIL-HDBK-5J, Table 5.4.1.0(d), DIA 0.501-1.000 in)
 
 Volume III of the Aerospace Structural Metals Handbook contains (typical) stress-strain curves for annealed bar (135 ksi Ftu) and aged sheet (160 ksi Ftu). The plastic strain at ultimate for both is roughly 0.4%.
 
-![ti-64-annealed-bar](/assets/ti-ductility/ASMH-III-Ti64-annbar-epu.png)
+<img src="/assets/ti-ductility/ASMH-III-Ti64-annbar-epu.png" alt="ti-64-annealed-bar" width=420>
 
-![ti-64-aged-sheet](/assets/ti-ductility/ASMH-III-Ti64-agsht-epu.png)
+<img src="/assets/ti-ductility/ASMH-III-Ti64-agsht-epu.png" alt="ti-64-aged-sheet" width=420>
 
 
 ## Stress-Strain Curves from Whittaker Test Data
@@ -87,14 +87,14 @@ Engineering plastic strain at maximum load ~ 0.07 in/in
 True total strain at maximum load ~ 0.08 in/in  
 Proportionality constant for Hollomon equation ~ 300 ksi
 
-![whittaker-a286-load-true-strain](/assets/ti-ductility/whit-a286-true-s-e.png)
+<img src="/assets/ti-ductility/whit-a286-true-s-e.png" alt="whittaker-a286-load-true-strain" width=640>
 
 ### Ti 6Al-4V fastener
 Engineering plastic strain at maximum load ~ 0.01 in/in  
 True total strain at maximum load ~ 0.024 in/in  
 Proportionality constant for Hollomon equation ~ 550 ksi
 
-![whittaker-ti64-load-true-strain](/assets/ti-ductility/whit-ti64-true-s-e.png)
+<img src="/assets/ti-ductility/whit-ti64-true-s-e.png" alt="whittaker-ti64-load-true-strain" width=640>
 
 ## Additional References
 - [NAS6303](https://ntrl.ntis.gov/NTRL/dashboard/searchResults/titleDetail/NAS63036320.xhtml) - "Bolt, Hex Head, Close Tolerance, A-286 CRES"

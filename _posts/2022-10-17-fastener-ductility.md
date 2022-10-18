@@ -12,7 +12,7 @@ A recent revision of the bolted joint tool we use at work introduced a mysteriou
 
 I don't like blindly using anything without understanding the rationale/theory behind it, so after spending multiple work afternoons digging into the rationale behind this (and countless more hours of my personal time) I decided it would make a great blog post.
 
-I've been working on this post on and off for the past 6 months. It spawned several research tangents and two new blog posts -- one [comparing preloaded joint analysis methods](/_posts/2022-08-31-joint-margin-methods.md), the other a [reference sheet for stress-strain curves](/_posts/2022-09-05-engineering-true-stress.md). Finally I feel like I have enough pieces to fill in a few knowledge gaps and better illustrate the differences between these two common fastener materials.
+I've been working on this post on and off for the past 6 months. It spawned several research tangents and two new blog posts -- one [comparing preloaded joint analysis methods]({% link _posts/2022-08-31-joint-margin-methods.md %}), the other a [reference sheet for stress-strain curves]({% link _posts/2022-09-05-engineering-true-stress.md %}). Finally I feel like I have enough pieces to fill in a few knowledge gaps and better illustrate the differences between these two common fastener materials.
 
 ## Key References
 - NASA-TIP-133R "Concerns with the Use of Titanium Fasteners" (2003)
@@ -27,7 +27,7 @@ I've been working on this post on and off for the past 6 months. It spawned seve
 ## Summary 
 Though the aforementioned NASA internal memo isn't publicly available, its author served as the mentor for Whittaker, who based his Master's thesis research on this topic; full-text of his thesis is publicly available through the UCF libraries. Key results of the research were summarized in a paper presented at the 43rd Aerospace Mechanisms Symposium, which is also publicly available.
 
-TL;DR Titanium fasteners are more brittle than steel and therefore more susceptible to variations in preload and external load (which aren't always accounted for in joint analysis - see my related post comparing different [joint margin methods](/_posts/2022-08-31-joint-margin-methods.md)).
+TL;DR Titanium fasteners are more brittle than steel and therefore more susceptible to variations in preload and external load (which aren't always accounted for in joint analysis - see my related post comparing different [joint margin methods]({% link _posts/2022-08-31-joint-margin-methods.md %})).
 
 My initial reaction to this was "duh, just look at the stress-strain curves." But it turns out there's limited (public) data available for either material -- if anything, it's for the annealed condition, not the specific tempers used for fasteners. 
 
@@ -78,7 +78,7 @@ We can also attempt to re-create stress-strain curves for both materials using t
 - Strain calculations are based on the overall bolt length minus the insert length (2.0 - 0.375 = 1.625 in / 41 mm) 
 - The elastic strain at 100 lbf load is added to the calculated engineering strains to account for zeroing of the displacement measurement during test
 - Data points beyond ultimate load are ignored; test data is used to estimate e'u (plastic strain at ultimate stress) rather than elongation (total strain at fracture)
-- Hollomon strain-hardening exponent estimated based on true strain value at ultimate load (described further in [this post](/_posts/2022-09-05-engineering-true-stress.md))
+- Hollomon strain-hardening exponent estimated based on true strain value at ultimate load (described further in [this post]({% link _posts/2022-09-05-engineering-true-stress.md %}))
 
 <em>Note: The curves below are presented for informational and educational purposes only. They are NOT intended to be used as design values.</em>
 

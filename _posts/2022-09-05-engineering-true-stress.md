@@ -109,7 +109,7 @@ This method can be used to approximate the shape of the (engineering) stress-str
 
 <em>Note that engineering plastic strain at ultimate stress is **not** the same as the elongation value reported in MMPDS, which per the definition is the true plastic strain at <u>fracture</u>.</em>
 
-**Holloman / Halford / Datsko**  
+**Hollomon / Halford / Datsko**  
 An equation for modeling the **plastic portion** of the true stress / true strain diagram is referenced by Shigley (Section 2-3) and concisely summarized by the front matter of a material test report prepared for the US Department of Energy (Mulkey, pgs 13-18). It is based on a modified Ramberg-Osgood relationship and can be used to represent material behavior in the full plastic region beyond the yield stress.
 
 $$ \sigma_T = \sigma_0 \left( \epsilon_T^p \right)^m $$

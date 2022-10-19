@@ -83,12 +83,12 @@ We can also attempt to re-create stress-strain curves for both materials using t
 <em>Note: The curves below are presented for informational and educational purposes only. They are NOT intended to be used as design values.</em>
 
 ### A-286 fastener 
-**Ramberg-Osgood Parameters**
+**Ramberg-Osgood Parameters**  
 Engineering plastic strain at maximum load e'u = 0.07 in/in  
 The exponent can be calculated using e'u, Fty = 120 ksi, and Ftu = 160 ksi  
 *n* = 12.4
 
-**Strain-hardening exponent**
+**Strain-hardening exponent**  
 Using the reciprocal of the RO exponent m = (1/n) = 0.08  
 Using true total strain at maximum load, m ~ 0.08 in/in  
 Proportionality constant for Hollomon equation ~ 300 ksi
@@ -103,7 +103,7 @@ The exponent can be calculated using e'u, Fty = 150 ksi, Ftu = 160 ksi
 
 **Strain-hardening exponent**  
 Using the reciprocal of the RO exponent, m = (1/n) = 0.04  
-Using true total strain at maximum load ~ 0.024 in/in  
+Using true total strain at maximum load m ~ 0.024 in/in  
 Proportionality constant for Hollomon equation ~ 550 ksi
 
 <img src="/assets/ti-ductility/whit-ti64-true-s-e.png" alt="whittaker-ti64-load-true-strain" width=640>

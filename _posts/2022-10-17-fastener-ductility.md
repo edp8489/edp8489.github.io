@@ -52,7 +52,7 @@ It also contains a table of producer typical properties for bar at various condi
 
 <img src="/assets/ti-ductility/ASMH-II-A286-props.png" alt="a286-bar-props" width=420>
 
-The handbook also provides (typical?) stress-strain curves through yield and ultimate for 157 ksi solution treated and aged sheet. The plastic strain at ultimate is above 25%.
+The handbook also provides (typical?) stress-strain curves through yield and ultimate for 150 ksi solution treated and aged sheet. The plastic strain at ultimate is above 25%.
 
 <img src="/assets/ti-ductility/ASMH-II-A286-aged-sht-yld.png" alt="a286-aged-sht-through-yld" width=420>
 
@@ -83,15 +83,27 @@ We can also attempt to re-create stress-strain curves for both materials using t
 <em>Note: The curves below are presented for informational and educational purposes only. They are NOT intended to be used as design values.</em>
 
 ### A-286 fastener 
-Engineering plastic strain at maximum load ~ 0.07 in/in  
-True total strain at maximum load ~ 0.08 in/in  
+**Ramberg-Osgood Parameters**
+Engineering plastic strain at maximum load e'u = 0.07 in/in  
+The exponent can be calculated using e'u, Fty = 120 ksi, and Ftu = 160 ksi  
+*n* = 12.4
+
+**Strain-hardening exponent**
+Using the reciprocal of the RO exponent m = (1/n) = 0.08  
+Using true total strain at maximum load, m ~ 0.08 in/in  
 Proportionality constant for Hollomon equation ~ 300 ksi
 
 <img src="/assets/ti-ductility/whit-a286-true-s-e.png" alt="whittaker-a286-load-true-strain" width=640>
 
 ### Ti 6Al-4V fastener
-Engineering plastic strain at maximum load ~ 0.01 in/in  
-True total strain at maximum load ~ 0.024 in/in  
+**Ramberg-Osgood Parameters**  
+Engineering plastic strain at maximum load e'u = 0.01 in/in  
+The exponent can be calculated using e'u, Fty = 150 ksi, Ftu = 160 ksi   
+*n* = 24.9
+
+**Strain-hardening exponent**  
+Using the reciprocal of the RO exponent, m = (1/n) = 0.04  
+Using true total strain at maximum load ~ 0.024 in/in  
 Proportionality constant for Hollomon equation ~ 550 ksi
 
 <img src="/assets/ti-ductility/whit-ti64-true-s-e.png" alt="whittaker-ti64-load-true-strain" width=640>

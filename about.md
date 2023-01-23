@@ -3,7 +3,7 @@ layout: post
 title: About Me
 ---
   
-[Resume](/assets/EPeters_Resume_2022-08-28.pdf)  
+[Resume](/assets/epeters_cv_2023-01-22.pdf)  
 Contact: e_peters@alum.mit.edu
 
 ## Bio

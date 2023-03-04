@@ -24,6 +24,11 @@ Here's a quick cheat sheet of photography basics and rules of thumb that I colla
   - Useful for landscape photography
   - Aperture range f/11 and beyond (up to f/22)
 
+## ISO (Light Sensitivity)
+- Higher ISO = more noise
+- ISO 400 standard for normal day shot
+- Bright, sunny day, ISO 100-200
+
 ## Sensor Size & (Equivalent) Focal Length
 - Cameras have different sensor sizes
 - Using the frame size of a 35mm film camera as a reference point, you can estimate the field of view you'll get for a specific lens/camera combination.

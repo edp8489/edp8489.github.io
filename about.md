@@ -4,7 +4,7 @@ title: About Me
 ---
   
 [Resume](/assets/epeters_cv_2023-01-22.pdf)  
-Contact: e_peters@alum.mit.edu
+Contact: eric@epeters.io
 
 ## Bio
 I studied aerospace engineering at MIT, earning bachelor's and master's degrees in 2011 and 2014. My graduate research focused on small spacecraft/instrument development (think: shoebox-to-dishwasher size scale). Notable projects include design, development, and integration of the MicroMAS ([1](https://beaverworks.ll.mit.edu/CMS/bw/projectmicromas), [2](https://www.ll.mit.edu/news/micromas-cubesat-technology-provides-fresh-approach-weather-forecasting)) 3U CubeSat technology demonstrator and preliminary structural design of the [REXIS](https://www.asteroidmission.org/?attachment_id=1205#main) x-ray spectrometer instrument for NASA's OSIRIS-REx spacecraft. 

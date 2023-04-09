@@ -14,7 +14,7 @@ Here's a quick cheat sheet of photography basics and rules of thumb that I colla
 - Smaller apertures let in less light, require slower shutter speed, allow higher depth of field
 - Shallow depth of field: Subject is in focus, background is very blurry
   - Used for single-person portraits and low-light shots
-  - Aperture range f/1.8 - f/3.5
+  - Aperture range f/1.4 - f/3.5
 - Medium depth of field: Subject is in focus, background is moderately blurry
   - Used for group photos or scenes where you want a discernable background but without sharp details
   - Aperture f/4-f/8 (up to f/11 or so)
@@ -31,3 +31,4 @@ Here's a quick cheat sheet of photography basics and rules of thumb that I colla
   - Cell phone sensor: Crop factor = 3.2 (TBR)
 
 ## References
+- [Aperture Magic](https://youtu.be/ZF8d0KqwnSw)

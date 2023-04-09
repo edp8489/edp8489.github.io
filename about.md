@@ -4,7 +4,7 @@ title: About Me
 ---
   
 [Resume](/assets/epeters_cv_2023-01-22.pdf)  
-Contact: e_peters@alum.mit.edu
+Contact: eric \[at\] epeters.io
 
 ## Bio
 I studied aerospace engineering at MIT, earning bachelor's and master's degrees in 2011 and 2014. My graduate research focused on small spacecraft/instrument development (think: shoebox-to-dishwasher size scale). Notable projects include design, development, and integration of the MicroMAS ([1](https://beaverworks.ll.mit.edu/CMS/bw/projectmicromas), [2](https://www.ll.mit.edu/news/micromas-cubesat-technology-provides-fresh-approach-weather-forecasting)) 3U CubeSat technology demonstrator and preliminary structural design of the [REXIS](https://www.asteroidmission.org/?attachment_id=1205#main) x-ray spectrometer instrument for NASA's OSIRIS-REx spacecraft. 
@@ -21,3 +21,6 @@ Some of the content you can expect includes:
 - [Blog posts](/posts.md) that deep-dive various technical topics I come across during daily work or share design tips that could be useful during the preliminary design phase
 
 Whenever possible, I'll do my best to include links to publicly-accessible references for any data used in technical posts, rather than exclusively reference expensive journal papers or industry specs.
+
+If you've found any of my content useful and would like to show your support, feel free to
+<div style="margin: auto; width:25%"><script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="epetersio" data-color="#5F7FFF" data-emoji="👨🏻‍💻"  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script></div>

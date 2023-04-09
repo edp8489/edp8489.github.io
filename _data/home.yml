@@ -10,10 +10,11 @@ navbar_entries:
 
 footer_entries:
   - title: Linkedin
-    url: https://www.linkedin.com/in/eric-peters-a187aa17/
-
+    url: https://www.linkedin.com/in/e-d-p/
   - title: github
     url: https://github.com/edp8489
+  - title: Buy Me a Coffee
+    url: https://www.buymeacoffee.com/epetersio
 
 project_entries:
   - title: Countersunk Joint Data Viewer

@@ -17,6 +17,9 @@ footer_entries:
     url: https://www.buymeacoffee.com/epetersio
 
 project_entries:
+  - title: Stressed
+    url: https://edp8489.github.io/stressed
+    desc: Calculate principal stresses, Tresca and von Mises failure theories, and plot Mohr's Circle for a 3D stress state.
   - title: Countersunk Joint Data Viewer
     url: https://edp8489.github.io/csk_knockdown_tool
     desc: Visualize strength data and associated nondim. knockdown factors for countersunk fasteners of varying materials and head styles. References MIL-HDBK-5J / MMPDS-01 data.

@@ -8,9 +8,7 @@ Another month, another softball blog post. Honestly, this one is just as much fo
 
 Our good friend Dr. Timoshenko provides a method for calculating the buckling coefficient for rectangular plates subject to in-plane bending and combinations of bending + compression/tension. 
 
-A python script containing all functions and two verification problems is available on my [Github]().
-
-I also created an interactive Jupyter notebook that you can run in [Google Colab]()  
+A python script containing all functions and two verification problems is available on my [Github](https://github.com/edp8489/misc-projects/blob/main/notebooks/timoshenko/timoshenko_bending_buckling.py). I also created an interactive Jupyter notebook that you can run in [Google Colab](https://colab.research.google.com/github/edp8489/misc-projects/blob/main/notebooks/timoshenko/bending_buckling.ipynb).  
 <em>(disclaimer: all of my web tools to date have performed all math using client-side JavaScript. This breaks that trend and <b>will</b> send your data to an external server. I'm mostly using this as an excuse to play around with Colab).</em>
 
 ## Validation
@@ -40,7 +38,7 @@ $$ S = \frac{\sigma_{cr} a^2 h}{\pi^2 D} $$
 and *D* is, of course, the flexural rigidity of the plate: 
 $$ D = \frac{Eh^3}{12(1-\nu^2)} $$
 
-The matrix elements are
+The matrix elements are:
 
 $$ c_1 = \left[ \left(1 + \frac{a^2}{b^2} \right)^2 \right] - S\left(1 - \frac{\alpha}{2}\right) $$
 
@@ -48,11 +46,20 @@ $$ c_2 = c_4 = -\frac{8 \alpha S}{\pi^2} \left( \frac{2}{9} \right) $$
 
 $$ c_3 = c_7 = 0 $$
 
-$$ c_5 = $$
+$$ c_5 = \left[ \left(1 + 4 \frac{a^2}{b^2} \right)^2 \right] - S\left(1 - \frac{\alpha}{2}\right) $$
 
-$$ c_6 = c_8 = $$
+$$ c_6 = c_8 = -\frac{8 \alpha S}{\pi^2} \left( \frac{6}{25} \right) $$
 
-$$ c_9 = $$
+$$ c_9 = \left[ \left(1 + 9 \frac{a^2}{b^2} \right)^2 \right] - S\left(1 - \frac{\alpha}{2}\right) $$
+
+With the system of equations in matrix form, the buckling coefficient(s) can be obtained by:  
+1. Plugging in *a*, *b* and $ \alpha $  
+2. Solving $ \det(C) = 0 $  
+3. Taking *k* = the minimum result (that's also > 0). 
+
+BUT there's one final caveat &mdash; *a<sup>2</sup>* is used in the system of equations, but *b<sup>2</sup>* is used in the actual buckling equation. So the coefficient obtained above needs to be divided by *(a/b)<sup>2</sup>* to get the correct value for rectangular plates.
+
+(This drove me crazy the first time I tried making a calculator for this a few years ago and almost did a second time, too. *Why would it work for square aspect ratios but not for others... aha!*) 
 
 ## References
 Timoshenko and Gere, <i>Theory of Elastic Stability (2nd ed.)</i>, Article 9.6

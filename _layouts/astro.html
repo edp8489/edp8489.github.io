@@ -1,0 +1,12 @@
+---
+layout: default
+---
+
+<header>
+    {% if site.theme_config.show_navbar == true %}
+    {% include horizontal_list.html collection=site.data.home.navbar_entries %}
+    <div class="dashed"></div>
+  {% endif %}
+</header>
+
+{{ content }}

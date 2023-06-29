@@ -1,20 +1,21 @@
 /*! div style */
 .image-gallery {
   width: 100%;
-  display: flex;
-  grid-template-columns: repeat(auto-fill,minmax(200px, 1fr));
-  justify-content: center;
+  display: grid;
+  grid-auto-flow: row;
+  /*justify-content: center;*/
   padding: 4px;
   
 }
 
 .image-box {
-    flex-basis: 25%;
-    width: 100%;
+  display: flex;  
+  flex-basis: 25%;
+    /*width: 100%;*/
     padding: 10px;
     margin: 2px;
     position:relative;
-    display: flex;
+    
     align-items: center; /* Center items vertically */
     justify-content: center; /* Center items horizontally */
 }

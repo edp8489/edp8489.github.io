@@ -7,6 +7,8 @@ navbar_entries:
     url: posts
   - title: Portfolio
     url: portfolio
+  - title: Astrophotography
+    url: astrophotography
 
 footer_entries:
   - title: Linkedin

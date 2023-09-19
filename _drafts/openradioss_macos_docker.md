@@ -123,4 +123,41 @@ limactl shell apptainer
 
 ```
 
-This started by downloading a 640 MB Ubuntu image
+The Apptainer template uses the full Ubuntu cloud server image, which is a 650 MB download and 1.8GB once built. 
+
+```zsh
+eric@lima-apptainer-rosetta:/$ df -h /
+> Filesystem      Size  Used Avail Use% Mounted on
+> /dev/vda1       9.6G  1.8G  7.8G  19% /
+```
+
+The Apptainer image `openradioss.sif` is 535 MB once built
+
+```zsh
+eric@lima-apptainer-rosetta:~/OpenRadioss/Apptainer$ du -h ../Apptainer/
+> 535M	../Apptainer/
+eric@lima-apptainer-rosetta:~/OpenRadioss/Apptainer$ df -h /
+> Filesystem      Size  Used Avail Use% Mounted on
+> /dev/vda1       9.6G  3.2G  6.4G  34% /
+
+```
+
+We can launch the image and check whether the build was successful as follows.
+
+```zsh
+eric@lima-apptainer-rosetta:~/OpenRadioss/Apptainer$ apptainer shell openradioss.sif
+Apptainer> echo $PATH
+> /opt/openmpi/bin:/opt/OpenRadioss/exec:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+Apptainer> ls /opt/OpenRadioss/exec
+> anim_to_vtk_linux64_gf	engine_linux64_gf  engine_linux64_gf_ompi  th_to_csv_linux64_gf
+```
+
+By comparison, the Colima docker template uses a barebones Arch linux image that is only ## MB once built.
+
+```zsh
+colima-docker-rosetta:/$ df -h /
+> Filesystem                Size      Used Available Use% Mounted on
+> tmpfs                     2.9G    555.6M      2.4G  19% /
+
+```

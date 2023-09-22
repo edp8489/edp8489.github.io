@@ -12,26 +12,23 @@ If you're a macOS user who needs to use the OpenRadioss program, but are frustra
 
 I initially tried to cross-compile for macOS using `osxcross` (see [post](_posts/2022-02-23-osxcross-setup)), however the build relies on three pre-compiled external libraries that are only provided for Windows and Linux.
 
-In this post I will walk you through setting up a virtual environment and running Ubuntu through a Docker container.
+In this post I will walk you through setting up a virtual environment and compiling the OpenRadioss through an x86_64 Docker container.
 
 [Lima](https://lima-vm-io) allows you to create Linux virtual machines with automatic file sharing and port forwarding (similar to WSL2) on macOS host systems. [Colima](https://github.com/abiosoft/colima) simplifies creating container runtimes (Docker, Containerd, Kubernetes).
 
 
 ## Virtual Machine Setup
 ```zsh
-$ brew install colima docker docker-compose
+$ brew install lima colima docker docker-compose
 ```
 
-I'm running a Mac Mini with Apple's M1 chip (arm64 processor architecture). Though the external libraries are compiled for both x86_64 and arm64 Linux, the arm64 build toolchain didn't match what's define in the project's CMake template and I didn't feel like creating a custom one. Instead, we're going to create an x86_64 container.
-
-
-First, create a Linux virtual machine (VM) that will run the Docker daemon. There are three ways this could be configured, according to the [Lima documentation](https://github.com/lima-vm/lima/blob/master/docs/multi-arch.md#intel-on-arm-and-arm-on-intel). From slowest to fastest, they are:    
-- VM with x86_64 processor emulation via Lima/Qemu
-- VM with host (arm64) processor architecture running an x64_64 container image via Qemu process emulation
-- VM with host processor architecture running an x64_64 container image via Rosetta virtualization
+First, create a Linux virtual machine (VM) that will run the Docker daemon. There are three ways this could be configured, according to the [Lima documentation](https://lima-vm.io/docs/config/multi-arch/). From slowest to fastest, they are:    
+- VM with x86_64 processor emulation via Qemu (system mode emulation)
+- VM with host (arm64) processor architecture running an x64_64 container image via Qemu (user mode emulation)
+- VM with host processor architecture running an x64_64 container image via Rosetta
 
 The basic command to create a VM is `colima start`. You can customize the configuration with the following flags:  
-- `--profile`: The name of the VM. It appears that (co)lima doesn't like underscores in profile names, especially when using the ubuntu abstraction layer, so stick to hyphens or camelCase.
+- `--profile`: The name of the VM. It appears that (co)lima doesn't like underscores in profile names, especially when using the Ubuntu abstraction layer, so stick to hyphens or camelCase.
 - `--arch`: Processor architecture (`host`, `x86_64`, or `aarch64`)
 - `--cpu`: Number of CPU cores
 - `--memory`: Amount of RAM (in GB)
@@ -45,6 +42,7 @@ $ colima start --profile ubuntu-arm64 --cpu 2 --memory 6 --disk 10 --arch host -
 ```
 
 Create a virtual machine with x86_64 processor architecture using Qemu system emulation. Enable the Ubuntu layer for general purpose use.
+
 ```zsh
 $ colima start --profile ubuntu-x86 --cpu 2 --memory 6 --disk 10 --arch x86_64 --layer
 ```
@@ -65,19 +63,36 @@ docker-rosetta    Running    aarch64    2       6GiB      10GiB    docker
 Once the virtual machine is created, you can SSH into it with the `colima ssh` command. This was incredibly useful for troubleshooting shared folder mount locations within the VM.
 
 ```zsh
-$ colima ssh --profile linux_x86_rosetta
+$ colima ssh --profile docker-rosetta
 colima-docker-rosetta:/Users/eric$ uname -a
-> Linux colima-docker-rosetta 6.1.29-0-virt #1-Alpine SMP Wed, 17 May 2023 14:22:15 +0000 aarch64 Linux
+> Linux colima-docker-rosetta 6.1.29-0-virt #1-Alpine SMP aarch64 Linux
 ```
 
 ## Docker Setup
-Download latest Ubuntu image from Docker Hub, create a new container called `ubuntu_radioss`, and run it in interactive mode (`-i`) with a pseudo-TTY input (`-t`). 
+Lucky for us, the OpenRadioss project already includes a container definition file. Unfortunately, it uses Apptainer rather than Docker (more on that later). Through the power of AI chatbots, here's that converted to a Dockerfile (available on my [GitHub](https://gist.github.com/edp8489/11d9e93fbea5952caac526b89dd92b53).)
+
+Save that in an empty directory with the name `Dockerfile` and run the following command
+
+```zsh
+$ docker build -t openradioss_x86 /path/to/Dockerfile
+
+$ docker image ls                                                                           
+> REPOSITORY        TAG       IMAGE ID       CREATED         SIZE
+> openradioss_x86   latest    d2e2fb88d1cc   3 minutes ago   2.2GB
+```
+
+Once the image is created, you can run the container in interactive mode (`-i`) with a pseudo-TTY input (`-t`) via
+
+```zsh
+$ docker run --name openradioss --platform linux/amd64 -v /your/shared/directory:/mnt/host_shared -it openradioss_x86
+```
+
 
 The `-v` flag shares a directory, `/host/directory`, from our host system (in this case the Colima VM running Docker) with the container, mounted at `/container/directory`. Docker uses a : to split the host’s path from the container path, and the host path always comes first. By default, Colima shares the absolute path to your home directory with the VM running the Docker daemon. I want to remap this to look like a mounted volume within the Docker container.
 
 *Note:  
 `$` implies the input prompt for my Mac terminal session.  
-`>` implies the prompt for Ubuntu running inside the Docker container.*
+`>` implies the prompt from inside the Docker container.*
 
 ```zsh
 $ docker run --name ubuntu_radioss --platform linux/amd64 -v /Users/eric:/mnt/host_home -it ubuntu

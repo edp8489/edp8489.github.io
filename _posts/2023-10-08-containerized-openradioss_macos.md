@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Compiling OpenRadioss on macOS via Virtualized Containers
-date: 2023-09-17
+date: 2023-10-08
 ---
 
 I recently discovered that Altair has released an [open source](https://www.openradioss.org){:target="_blank" rel="noopener"} version of their explicit dynamics solver, Radioss. I've wanted to learn this type of simulation for a few years, but haven't had many opportunities to gain exposure through work. This seems like the perfect opportunity to start (*yet another* &#128516;) series of side projects and teach myself the basics.

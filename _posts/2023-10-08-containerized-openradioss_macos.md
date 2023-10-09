@@ -22,8 +22,7 @@ Continue reading for instructions to create a virtual machine (VM) that will run
 ## Apptainer Engine VM
 First, install `lima` through Homebrew with `brew install lima`.
 
-Next, create a Linux VM that will run the Apptainer daemon. There are three ways this could be configured, according to the [Lima documentation](https://lima-vm.io/docs/config/multi-arch/){:target="_blank" rel="noopener"}
-. From slowest to fastest, they are:    
+Next, create a Linux VM that will run the Apptainer daemon. There are three ways this could be configured, according to the [Lima documentation](https://lima-vm.io/docs/config/multi-arch/){:target="_blank" rel="noopener"}. From slowest to fastest, they are:    
 - VM with x86_64 processor emulation via Qemu (system mode emulation)
 - VM with host (arm64) processor architecture running an x64_64 container image via Qemu (user mode emulation)
 - VM with host processor architecture running an x86_64 container image via Rosetta virtualization

@@ -66,10 +66,11 @@ $ limactl start apptainerVM
 $ limactl shell apptainerVM
 
 > cd /path/to/OpenRadioss/Apptainer
-> apptainer build openradioss.sif openradioss.def
-> ln -s openradioss.sif /usr/local/bin/
+> apptainer build ~/openradioss.sif openradioss.def
+> ln -s ~/openradioss.sif /usr/local/bin/
 ```
-The last command create a symbolic link to the container image in a directory that's part of the VM's `$PATH`. The image `openradioss.sif` is 535 MB once built.
+
+The last two commands save the apptainer image in the VM's home directory (`/home/username.linux/`) and creates a symbolic link to the image in a directory that's part of the VM's `$PATH`. The image `openradioss.sif` is 535 MB once built.
 
 ```zsh
 > du -h ./Apptainer

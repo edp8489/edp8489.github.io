@@ -69,26 +69,31 @@ $ limactl shell apptainerVM
 > apptainer build openradioss.sif openradioss.def
 > ln -s openradioss.sif /usr/local/bin/
 ```
-The last command create a symbolic link to the container image in a directory that's part of the VM's `$PATH`. The image `openradioss.sif` is 535 MB once built
+The last command create a symbolic link to the container image in a directory that's part of the VM's `$PATH`. The image `openradioss.sif` is 535 MB once built.
 
 ```zsh
-eric@lima-apptainer-rosetta:~/OpenRadioss/$ du -h ./Apptainer
-> 535M	./Apptainer/
-eric@lima-apptainer-rosetta:~/OpenRadioss/$ df -h /
-> Filesystem      Size  Used Avail Use% Mounted on
-> /dev/vda1       9.6G  3.2G  6.4G  34% /
+> du -h ./Apptainer
+535M	./Apptainer/
+
+> df -h /
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vda1       9.6G  3.2G  6.4G  34% /
 
 ```
 
-We can run the container and check whether the build was successful as follows.
+We can run the container and check whether the build was successful as follows. By [default](https://apptainer.org/docs/user/latest/quick_start.html#working-with-files){:target="_blank" rel="noopener"}, Apptainer bind mounts `/home/$USER`, `/tmp`, and `$PWD` into your container at runtime. 
+
+Additional directories can be specified with the `--bind /path/in/VM:/path/in/container` flag.
 
 ```zsh
-eric@lima-apptainer-rosetta:~$ apptainer shell openradioss.sif
+> apptainer shell openradioss.sif
 Apptainer> echo $PATH
-> /opt/openmpi/bin:/opt/OpenRadioss/exec:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+/opt/openmpi/bin:/opt/OpenRadioss/exec:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 Apptainer> ls /opt/OpenRadioss/exec
-> anim_to_vtk_linux64_gf	engine_linux64_gf  engine_linux64_gf_ompi  th_to_csv_linux64_gf
+
+anim_to_vtk_linux64_gf	engine_linux64_gf  engine_linux64_gf_ompi  th_to_csv_linux64_gf
 ```
 
 To shut down the VM once you're finished, use `limactl stop`.
@@ -108,6 +113,7 @@ Follow the instructions from Brew's output to symlink the Docker compose and bui
 
 ```zsh
 ln -sfn /opt/homebrew/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
+
 ln -sfn /opt/homebrew/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
 ```
 

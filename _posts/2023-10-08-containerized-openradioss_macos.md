@@ -137,4 +137,4 @@ To shut down the VM once you're finished, use `CTRL + D` to exit the VM shell se
 $ limactl stop apptainerVM
 ```
 
-Keep an eye out for Part 2 where I'll walk you through running an example problem (and the tangled path of shared directory mounts needed to share files between Host <--> VM <--> Apptainer file systems).
+Keep an eye out for [Part 2](/_posts/2023-11-28-openradioss-container-directory-sharing.md) where I'll walk you through running an example problem (and the tangled path of shared directory mounts needed to share files between Host <--> VM <--> Apptainer file systems).

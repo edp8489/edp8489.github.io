@@ -3,7 +3,7 @@ layout: post
 title: "Containerized OpenRadioss on macOS, pt 2: Sharing Directories"
 date: 2023-11-28
 ---
-In [Part 1]({% link _posts/2023-10-08-containerized-openradioss_macos.md %}) I described how to run [OpenRadioss](https://github.com/OpenRadioss/OpenRadioss) on macOS by setting up a Linux virtual machine that can build and run the arm64 Apptainer image. Now the real fun begins.
+In [Part 1]({% link _posts/2023-10-08-containerized-openradioss_macos.md %}) I described how to run [OpenRadioss](https://github.com/OpenRadioss/OpenRadioss){:target="_blank" rel="noopener"} on macOS by setting up a Linux virtual machine that can build and run the arm64 Apptainer image. Now the real fun begins.
 
 Before we can start solving models, though, we need a reliable method of seamlessly sharing files between host system <--> virtual machine <--> container. The remainder of this post assumes you (mostly) followed my instructions in Part 1.
 
@@ -43,7 +43,7 @@ Finally, we need to bind the absolute path to the host directory we want to shar
 ## Troubleshooting
 By [default](https://apptainer.org/docs/user/latest/quick_start.html#working-with-files){:target="_blank" rel="noopener"}, Apptainer mounts `/home/$USER`, `/tmp`, and `$PWD` into your container at runtime. Note that `/home/$USER` refers to the home directory of the local user inside the <b>virtual machine</b>, not your host system.
 
-You can [bind](https://apptainer.org/docs/user/main/bind_paths_and_mounts.html#user-defined-bind-paths) additional directories from the VM to the container using:  
+You can [bind](https://apptainer.org/docs/user/main/bind_paths_and_mounts.html#user-defined-bind-paths){:target="_blank" rel="noopener"} additional directories from the VM to the container using:  
 `--bind /host/dir:/container/dir --writable`
 
 

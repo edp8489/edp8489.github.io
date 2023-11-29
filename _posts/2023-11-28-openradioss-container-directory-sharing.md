@@ -3,7 +3,7 @@ layout: post
 title: "Containerized OpenRadioss on macOS, pt 2: Sharing Directories"
 date: 2023-11-28
 ---
-In [Part 1](/_posts/2023-10-08-containerized-openradioss_macos.md) I described how to run [OpenRadioss](https://github.com/OpenRadioss/OpenRadioss) on macOS by setting up a Linux virtual machine that can build and run the arm64 Apptainer image. Now the real fun begins.
+In [Part 1]({% link _posts/2023-10-08-containerized-openradioss_macos.md %}) I described how to run [OpenRadioss](https://github.com/OpenRadioss/OpenRadioss) on macOS by setting up a Linux virtual machine that can build and run the arm64 Apptainer image. Now the real fun begins.
 
 Before we can start solving models, though, we need a reliable method of seamlessly sharing files between host system <--> virtual machine <--> container. The remainder of this post assumes you (mostly) followed my instructions in Part 1.
 

@@ -45,7 +45,7 @@ title: About Me
       <li><i class="fa fa-envelope" >&nbsp;&nbsp;</i>eric [at] epeters.io</li>
       <li><i class="fa fa-linkedin" >&nbsp;&nbsp;</i><a href="https://www.linkedin.com/in/e-d-p" target="_blank">LinkedIn</a></li>
       <li><i class="fa fa-github" >&nbsp;&nbsp;</i><a href="https://github.com/edp8489" target="_blank">github.com/edp8489</a></li>
-      <li><i class="fa fa-file-text-o" >&nbsp;&nbsp;</i><a href="/assets/epeters_cv_2023-01-22.pdf">Resume</a></li>
+      <li><i class="fa fa-file-text-o" >&nbsp;&nbsp;</i><a href="/assets/epeters_cv_2023-08-17.pdf">Resume</a></li>
     </ul>
       &nbsp;<br />
     <div text-align="center">

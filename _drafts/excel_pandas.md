@@ -4,9 +4,9 @@ title: Python/Pandas Tricks for Handling Excel Files
 date: 2022-12-23
 ---
 
-As I've mentioned before, I have a love/hate relationship with Excel. I acknowledge it's a convenient way to visualize/format/manage tabular data, but I <i>hate</i> using it for complex calculations. I've been using Python + Pandas to import and process fairly simple spreadsheet data for years, but have recently been trying to force myself to learn how to automate some of the more repetitive cut/paste/drag manual tasks.
+As I've mentioned before, I have a love/hate relationship with Excel. Sure, it's a great way to visualize/format/manage tabular data, and supe convenient when you need to run a few iterations of a simple calculation... but I <i>hate</i> using it for complex calculations, which is what everything inevitably turns into. I've been using Python + Pandas to import and process fairly simple spreadsheet data for years, but have recently been trying to force myself to learn how to automate some of the more repetitive cut/paste/drag manual tasks.
 
-The most common type of data I have to deal with is some form of 2D lookup using either `HLOOKUP` or `INDEX( MATCH ( ... ) )`. I know that once the data is actually imported, a Pandas MultiIndex is the perfect way to access the data. But how do you "stack" the columns without manually cut/pasting columns 2:n and then copying the first index column <i>n-1</i> times? Turns out the answer is via `pandas.melt( )`.
+The most common type of data I have to deal with is some form of 2D (or worse) lookup using either `HLOOKUP` or some nested `INDEX( MATCH ( ... ) )` monstrosity. I know that once the data is actually imported, a Pandas MultiIndex is the perfect way to access the data. But how do you "stack" the columns without manually cut/pasting columns 2:n and then copying the first index column <i>n-1</i> times? Turns out the answer is via `pandas.melt( )`.
 
 For example, say the data you're importing has some form of ID as the first column (primary index) and additional columns 
 

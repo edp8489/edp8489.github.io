@@ -28,8 +28,8 @@
       </div>
     </main>
 
-    {% if site.google_analytics and jekyll.environment == 'production' %}
-        {% include analytics.html %}
+    {% if jekyll.environment == 'production' %}
+    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a1c2567cce8b44c9960eaf811b74705a"}'></script><!-- End Cloudflare Web Analytics -->
     {% endif %}
   </body>
 </html>

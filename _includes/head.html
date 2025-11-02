@@ -15,11 +15,11 @@
     {% feed_meta %}
   
     <link rel="shortcut icon" type="image/x-icon" href="{{ site.favicon | relative_url}}" />
-    <link rel="stylesheet" href='{{ "/assets/css/main.css" | relative_url }}'' />
+    <link rel="stylesheet" href='{{ "/assets/css/main.css" | relative_url }}' />
     <style>
-    {% if page.style %} 
-      {% include {{ page.style }}.css %}
-   {% endif %}
+      {% if page.style %} 
+        {% include {{ page.style }}.css %}
+      {% endif %}
    </style>
       
     {% if site.theme_config.appearance_toggle %}
@@ -27,4 +27,7 @@
     {% endif %}
   
     {%- include custom_head.html -%}
+    {% if jekyll.environment == 'production' %}
+        {% include analytics.html %}
+    {% endif %}
   </head>

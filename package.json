@@ -1,0 +1,21 @@
+{
+  "name": "epeters-io",
+  "module": "index.ts",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "markdown-it-mathjax3": "^4.3.2",
+    "plotly.js-dist-min": "^3.3.1",
+    "vitepress": "^1.6.4",
+    "vue": "^3.5.25"
+  },
+  "peerDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "private": true,
+  "scripts": {
+    "site:dev": "vitepress dev site",
+    "site:build": "vitepress build site",
+    "site:preview": "vitepress preview site"
+  },
+  "type": "module"
+}

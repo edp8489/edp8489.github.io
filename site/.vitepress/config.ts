@@ -7,7 +7,8 @@ export default defineConfig({
   description: "Personal portfolio of Eric Peters",
   head: [
     ['link', { rel: 'icon', href: '/assets/favicon_v1.svg' }],
-    ['meta', {name: 'robots', content: 'noarchive'}]
+    ['meta', {name: 'robots', content: 'noarchive'}],
+    ['script', {defer: '', src: 'https://analytics.admin.epeters.io/script.js', 'data-website-id': 'abd679ce-6753-4391-b368-ca5c09f21ec1' }]
   ],
   markdown: {
     math: true

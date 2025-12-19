@@ -95,6 +95,11 @@
             padding: 0 48px;
         }
     }
+    @media (min-width: 768px) {
+        :deep(.actions){
+            display: none;
+        }
+    }
 
     @media (min-width: 960px) {
         .features-heading {

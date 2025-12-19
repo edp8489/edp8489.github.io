@@ -15,6 +15,12 @@ hero:
     src: "/assets/favicon_v1.svg"
     alt: "site logo"
   actions:
+    - text: "About Me"
+      link: "/about"
+      theme: brand
+    - text: Blog
+      link: "/posts/"
+      theme: alt
 feature_heading: "Featured Projects"
 features:
   - title: Stressed
@@ -31,4 +37,4 @@ features:
     linkText: visit
 ---
 
-<RecentPosts :count="4" />
+<RecentPosts :count="3" />

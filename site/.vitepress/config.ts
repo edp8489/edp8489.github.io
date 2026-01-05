@@ -27,6 +27,7 @@ export default defineConfig({
       { text: 'About Me', link: '/about'},
       { text: 'Articles', link: '/posts/' },
       { text: 'Projects', link: '/projects' },
+      { text: 'Astrophotography', link: 'https://www.flickr.com/photos/198616423@N04/albums/72177720309406495/' }
     ],
     footer:{
       message: '',

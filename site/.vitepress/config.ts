@@ -31,7 +31,7 @@ export default defineConfig({
     ],
     footer:{
       message: '',
-      copyright: 'Copyright &copy; 2022-2025 Eric Peters'
+      copyright: 'Copyright &copy; 2022-2026 Eric Peters'
     },
     socialLinks: [
       { icon: 'buymeacoffee', link: 'https://www.buymeacoffee.com/epetersio'},

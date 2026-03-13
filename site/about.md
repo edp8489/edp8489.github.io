@@ -5,7 +5,7 @@ aside: false
 email: "eric [at] epeters.io"
 profile_pic: "/assets/profile_pic.jpeg"
 github: https://github.com/edp8489
-resume: "/assets/epeters_cv_2025-02.pdf"
+resume: "/assets/epeters_cv_2026-03.pdf"
 ---
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

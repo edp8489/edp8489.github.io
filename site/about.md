@@ -20,6 +20,8 @@ After finishing my master's, I spent two years at a startup working on the preli
 
 In late 2016 I joined Blue Origin as a structures engineer for the <a href="https://www.blueorigin.com/new-shepard/" target="_blank">New Shepard</a> Crew Capsule. I've provided design, analysis, and maintenance support for multiple vehicles across multiple lifecycle phases, including involvement with verification activities in support of human flight certification.
 
+After 9 years on New Shepard, I've moved to the Blue Moon program and currently serve as a structural analyst for the MK2 crewed lunar lander.
+
 **Accolades**  
 In 2022 I was honored by my hometown as one of <a href="https://www.rahwaysown.com/poster-gallery" target="_blank"><i>Rahway's Own</i></a>&mdash;a local program that highlights the achievements and contributions of Rahway residents past and present. Its goal is to foster pride and unity among residents and inspire future generations through curated profiles and features that showcase the diverse talents within the community. Check out the <a href="https://www.tapinto.net/towns/rahway/sections/meet-your-neighbors/articles/tapinto-rahway-interviews-aerospace-engineer-and-rahway-s-own-eric-peters" target="_blank">interview</a> I did for our local paper.
 

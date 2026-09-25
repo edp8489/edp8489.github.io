@@ -8,6 +8,10 @@ features:
     details: "Unified platform for all of my structural analysis tools."
     link: https://enginuity.epeters.io
     linkText: visit
+  - title: "Nutrition Tracker"
+    details: "Daily food log and recipe editor with an MCP server backend for LLM integrations. Uses OpenNutrition dataset."
+    link: https://broccolini.epeters.dev
+    linkText: visit
   - title: BELFIV
     details: "Modernization of FORTRAN program to compute flow-induced vibration modes in a bellows joint. Transcribed from NASA document MSFC-DWG-20M02540."
     link: "https://github.com/edp8489/belfiv"

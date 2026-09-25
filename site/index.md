@@ -27,13 +27,13 @@ features:
     details: "Unified platform for all of my structural analysis tools."
     link: https://enginuity.epeters.io
     linkText: visit
+  - title: "Nutrition Tracker"
+    details: "Daily food log and recipe editor with an MCP server backend for LLM integrations."
+    link: https://broccolini.epeters.dev
+    linkText: visit
   - title: Stressed
     details: "Calculate principal stresses, Tresca and von Mises failure theories, and plot Mohr's Circle for a 3D stress state."
     link: https://enginuity.epeters.io/stressed
-    linkText: visit
-  - title: Galvanic Compatibility
-    details: "Visualize the potential for galvanic corrosion between pairs of dissimilar metals and recommended surface treatments for each. References MIL-STD-889-C."
-    link: https://enginuity.epeters.io/galvanic-couples
     linkText: visit
 ---
 
